@@ -1,5 +1,5 @@
-import { Product } from './product'
-import { User } from './user'
+import { Product, transformProduct } from './product'
+import { transformUser, User } from './user'
 
 export interface Sale {
   id: string
@@ -12,7 +12,21 @@ export interface Sale {
 }
 
 export function transformSale(data: any): Sale {
-  return {} as Sale
+  const { id, productId, userId, quantity, deliveryDate, user, product } =
+    data.data
+
+  const transformedUser = user && transformUser(user)
+  const transformedProduct = product && transformProduct(product)
+
+  return {
+    id,
+    productId,
+    userId,
+    quantity,
+    deliveryDate,
+    user: transformedUser,
+    product: transformedProduct,
+  }
 }
 
 export function transformSaleArray(data: any): Sale[] {

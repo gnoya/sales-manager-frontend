@@ -9,7 +9,10 @@ export interface User {
 }
 
 export function transformUser(data: any): User {
-  return {} as User
+  const { id, fullName, identification, phone, email, address, token } =
+    data.data
+
+  return { id, fullName, identification, phone, email, address, token }
 }
 
 export function transformUserArray(data: any): User[] {

@@ -5,7 +5,9 @@ export interface Product {
 }
 
 export function transformProduct(data: any): Product {
-  return {} as Product
+  const { id, name, quantity } = data.data
+
+  return { id, name, quantity }
 }
 
 export function transformProductArray(data: any): Product[] {
