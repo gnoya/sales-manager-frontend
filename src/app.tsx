@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import RootRouter from './routers/root/root.router'
 
@@ -6,7 +6,9 @@ function App() {
   return (
     <StrictMode>
       <BrowserRouter>
-        <RootRouter />
+        <Suspense fallback={<div>Loading... </div>}>
+          <RootRouter />
+        </Suspense>
       </BrowserRouter>
     </StrictMode>
   )

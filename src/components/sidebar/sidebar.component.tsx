@@ -5,7 +5,7 @@ export default function Sidebar() {
   return (
     <div className={styles.container}>
       <NavLink
-        to="/sales"
+        to="/dashboard/sales/"
         className={({ isActive }) =>
           isActive ? styles.buttonActive : styles.button
         }
@@ -13,20 +13,12 @@ export default function Sidebar() {
         <p className={styles.buttonText}>Sales</p>
       </NavLink>
       <NavLink
-        to="/products"
+        to="/dashboard/products/"
         className={({ isActive }) =>
           isActive ? styles.buttonActive : styles.button
         }
       >
         <p className={styles.buttonText}>Products</p>
-      </NavLink>
-      <NavLink
-        to="/users"
-        className={({ isActive }) =>
-          isActive ? styles.buttonActive : styles.button
-        }
-      >
-        <p className={styles.buttonText}>Users</p>
       </NavLink>
       <NavLink
         to="/logout"
