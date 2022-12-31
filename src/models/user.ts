@@ -1,4 +1,11 @@
-export interface User {}
+export interface User {
+  id: string
+  fullName: string
+  identification: string
+  phone: string
+  email?: string
+  address?: string
+}
 
 export function transformUser(data: any): User {
   return {} as User
