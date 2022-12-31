@@ -5,6 +5,7 @@ export interface User {
   phone: string
   email?: string
   address?: string
+  token?: string
 }
 
 export function transformUser(data: any): User {

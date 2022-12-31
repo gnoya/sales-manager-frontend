@@ -1,3 +1,4 @@
+import { mockUser } from '../mock-data/mock-data'
 import { transformUser, User } from '../models/user'
 import { publicHTTP } from './http.service'
 
@@ -7,10 +8,12 @@ export interface SignInParams {
 }
 
 export async function signIn(params: SignInParams) {
-  const response = await publicHTTP.post('/auth/login', params)
-  const user = transformUser(response.data.data)
+  // const response = await publicHTTP.post('/auth/login', params)
+  const response = { data: mockUser }
+
+  const user = transformUser(response.data)
   saveUser(user)
-  saveToken(response.data.token)
+  saveToken(response.data.token ?? '')
 
   return user
 }
