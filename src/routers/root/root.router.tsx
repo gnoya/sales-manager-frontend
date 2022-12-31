@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router'
 import PrivateRoutes from '../../guards/private-routes/private-routes'
 import PublicRoutes from '../../guards/public-routes/public-routes'
+import DashboardLayout from '../../layouts/dashboard/dashboard.layout'
 import LoginPage from '../../pages/login/login.page'
 import NotFoundPage from '../../pages/not-found/not-found.page'
 import ProductsAddPage from '../../pages/products-add/products-add.page'
@@ -19,11 +20,47 @@ export default function RootRouter() {
       <Route path="*" element={<NotFoundPage />} />
 
       <Route element={<PrivateRoutes />}>
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products-add" element={<ProductsAddPage />} />
-        <Route path="/sale" element={<SalePage />} />
-        <Route path="/sales" element={<SalesPage />} />
-        <Route path="/sales-add" element={<SalesAddPage />} />
+        <Route
+          path="/products"
+          element={
+            <DashboardLayout pageTitle="Products">
+              <ProductsPage />
+            </DashboardLayout>
+          }
+        />
+
+        <Route
+          path="/products-add"
+          element={
+            <DashboardLayout pageTitle="Add Product">
+              <ProductsAddPage />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/sale"
+          element={
+            <DashboardLayout pageTitle="Sale Details">
+              <SalePage />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/sales"
+          element={
+            <DashboardLayout pageTitle="Sales">
+              <SalesPage />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/sales-add"
+          element={
+            <DashboardLayout pageTitle="Add Sale">
+              <SalesAddPage />
+            </DashboardLayout>
+          }
+        />
       </Route>
 
       <Route element={<PublicRoutes />}>

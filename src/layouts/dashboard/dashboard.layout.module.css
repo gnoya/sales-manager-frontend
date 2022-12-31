@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0;
+  background-color: var(--background1);
+}
+
+.childrenContainer {
+  padding: 10px;
+}
