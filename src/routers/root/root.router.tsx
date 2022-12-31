@@ -5,6 +5,7 @@ import LoginPage from '../../pages/login/login.page'
 import NotFoundPage from '../../pages/not-found/not-found.page'
 import ProductsAddPage from '../../pages/products-add/products-add.page'
 import ProductsPage from '../../pages/products/products.page'
+import SalePage from '../../pages/sale/sale.page'
 import SalesAddPage from '../../pages/sales-add/sales-add.page'
 import SalesPage from '../../pages/sales/sales.page'
 
@@ -20,6 +21,7 @@ export default function RootRouter() {
       <Route element={<PrivateRoutes />}>
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products-add" element={<ProductsAddPage />} />
+        <Route path="/sale" element={<SalePage />} />
         <Route path="/sales" element={<SalesPage />} />
         <Route path="/sales-add" element={<SalesAddPage />} />
       </Route>
