@@ -41,11 +41,13 @@ export default function UserItem({ user, onClick, onDelete }: UserItemProps) {
     <div className={styles.container} onClick={onClick}>
       <p className={styles.firstColumn}>{user.fullName}</p>
       <p className={styles.secondColumn}>{user.phone}</p>
-      <FontAwesomeIcon
-        onClick={deleteItem}
-        icon={faTrashCan}
-        className={styles.deleteIcon}
-      />
+      <div className={styles.forthColumn}>
+        <FontAwesomeIcon
+          onClick={deleteItem}
+          icon={faTrashCan}
+          className={styles.deleteIcon}
+        />
+      </div>
     </div>
   )
 }

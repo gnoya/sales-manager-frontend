@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import Title from '../../components/title/title.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -9,11 +8,10 @@ import LoadingScreen from '../../components/loading-screen/loading-screen.compon
 import styles from './add.layout.module.css'
 
 interface AddLayoutProps {
-  title: string
   children?: ReactNode
 }
 
-export default function AddLayout({ title, children }: AddLayoutProps) {
+export default function AddLayout({ children }: AddLayoutProps) {
   const { isLoading } = useLoading()
   const navigate = useNavigate()
 
@@ -27,7 +25,6 @@ export default function AddLayout({ title, children }: AddLayoutProps) {
               <span>Go back</span>
             </div>
           </div>
-          <Title>{title}</Title>
           <div className={styles.childrenContainer}>{children}</div>
         </>
       ) : (

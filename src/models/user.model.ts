@@ -1,3 +1,5 @@
+import * as Yup from 'yup'
+
 export interface User {
   id: string
   fullName: string
@@ -17,3 +19,11 @@ export function transformUser(data: any): User {
 export function transformUserArray(data: any): User[] {
   return data.map((item: any) => transformUser(item))
 }
+
+export const userFormValidation = Yup.object({
+  fullName: Yup.string().required(),
+  identification: Yup.string().required(),
+  phone: Yup.string().required(),
+  email: Yup.string().required(),
+  address: Yup.string().optional(),
+})

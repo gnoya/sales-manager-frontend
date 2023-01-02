@@ -42,11 +42,13 @@ export default function SaleItem({ sale, onClick, onDelete }: SaleItemProps) {
       <p className={styles.firstColumn}>{sale.product?.name || '-'}</p>
       <p className={styles.secondColumn}>{sale.quantity}</p>
       <p className={styles.thirdColumn}>{sale.deliveryDate}</p>
-      <FontAwesomeIcon
-        onClick={deleteItem}
-        icon={faTrashCan}
-        className={styles.deleteIcon}
-      />
+      <div className={styles.forthColumn}>
+        <FontAwesomeIcon
+          onClick={deleteItem}
+          icon={faTrashCan}
+          className={styles.deleteIcon}
+        />
+      </div>
     </div>
   )
 }

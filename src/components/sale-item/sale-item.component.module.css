@@ -11,7 +11,7 @@
 }
 
 .deleteIcon {
-  height: 70%;
+  height: 100%;
   color: var(--tertiary);
   cursor: pointer;
 }
@@ -26,4 +26,15 @@
 
 .thirdColumn {
   min-width: 100px;
+}
+
+.forthColumn {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  padding: 8px 0;
+  height: 100%;
+  align-items: center;
+  gap: 0 20px;
+  width: 100px;
 }

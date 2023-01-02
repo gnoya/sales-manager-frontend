@@ -1,5 +1,6 @@
 import { Product, transformProduct } from './product.model'
 import { transformUser, User } from './user.model'
+import * as Yup from 'yup'
 
 export interface Sale {
   id: string
@@ -35,3 +36,10 @@ export function transformSale(data: any): Sale {
 export function transformSaleArray(data: any): Sale[] {
   return data.map((item: any) => transformSale(item))
 }
+
+export const saleFormValidation = Yup.object({
+  productId: Yup.string().required(),
+  userId: Yup.string().required(),
+  quantity: Yup.number().min(0).required(),
+  deliveryDate: Yup.string().required(),
+})

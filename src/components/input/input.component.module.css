@@ -1,0 +1,13 @@
+.input {
+  border-radius: var(--border-radius);
+  background-color: var(--background2);
+  border: none;
+  padding: 10px 15px;
+  width: 100%;
+  color: var(--primary) !important;
+  outline: none;
+}
+
+.input:disabled {
+  opacity: 0.5;
+}
