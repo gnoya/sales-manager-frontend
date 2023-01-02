@@ -1,11 +1,13 @@
 import { Product } from '../../models/product.model'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 import toast from 'react-hot-toast'
 import { useModal } from '../../hooks/use-modal/use-modal.hook'
 import { deleteProduct } from '../../services/product.service'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
 import styles from './product-item.component.module.css'
+import { useLocation, useNavigate } from 'react-router'
 
 interface ProductItemProps {
   product: Product
@@ -20,6 +22,8 @@ export default function ProductItem({
 }: ProductItemProps) {
   const modal = useModal()
   const handleError = useErrorHandler()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   async function deleteItem(e: any) {
     e.stopPropagation() // to stop the onClick of the div parent
@@ -41,15 +45,26 @@ export default function ProductItem({
     }
   }
 
+  function editItem() {
+    navigate(`${pathname}../products-edit`)
+  }
+
   return (
     <div className={styles.container} onClick={onClick}>
       <p className={styles.firstColumn}>{product.name}</p>
       <p className={styles.secondColumn}>{product.quantity}</p>
-      <FontAwesomeIcon
-        onClick={deleteItem}
-        icon={faTrashCan}
-        className={styles.deleteIcon}
-      />
+      <div className={styles.thirdColumn}>
+        <FontAwesomeIcon
+          onClick={editItem}
+          icon={faPen}
+          className={styles.deleteIcon}
+        />
+        <FontAwesomeIcon
+          onClick={deleteItem}
+          icon={faTrashCan}
+          className={styles.deleteIcon}
+        />
+      </div>
     </div>
   )
 }

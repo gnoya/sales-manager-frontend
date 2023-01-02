@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import Pagination from '../../components/pagination/pagination.component'
 import ProductItem from '../../components/product-item/product-item.component'
 import Title from '../../components/title/title.component'
@@ -9,6 +10,7 @@ import { getProducts } from '../../services/product.service'
 import styles from './products.page.module.css'
 
 export default function ProductsPage() {
+  const { pathname } = useLocation()
   const [products, setProducts] = useState<Product[]>([])
   const { page, limit, totalPages, setTotalPages, prevPage, nextPage } =
     usePagination({
@@ -36,7 +38,7 @@ export default function ProductsPage() {
         />
       }
       title="Products"
-      createPath="/products-add"
+      createPath={`${pathname}../products-add`}
       onRefresh={fetchProducts}
     >
       {products.map((product: Product, index: number) => (

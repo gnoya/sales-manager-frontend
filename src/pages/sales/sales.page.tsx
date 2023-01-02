@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import Pagination from '../../components/pagination/pagination.component'
 import SaleItem from '../../components/sale-item/sale-item.component'
 import { usePagination } from '../../hooks/use-pagination/use-pagination.hook'
@@ -8,6 +9,7 @@ import { getSales } from '../../services/sale.service'
 import styles from './sales.page.module.css'
 
 export default function SalesPage() {
+  const { pathname } = useLocation()
   const [sales, setSales] = useState<Sale[]>([])
   const { page, limit, totalPages, setTotalPages, prevPage, nextPage } =
     usePagination({
@@ -35,7 +37,7 @@ export default function SalesPage() {
         />
       }
       title="Sales"
-      createPath="/sales-add"
+      createPath={`${pathname}../sales-add`}
       onRefresh={fetchSales}
     >
       {sales.map((sale: Sale, index: number) => (

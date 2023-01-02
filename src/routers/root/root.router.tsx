@@ -11,7 +11,7 @@ export default function RootRouter() {
   return (
     <Routes>
       <Route element={<PublicRoutes />}>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login/" element={<LoginPage />} />
       </Route>
 
       <Route path="/dashboard/*" element={<DashboardRouter />} />

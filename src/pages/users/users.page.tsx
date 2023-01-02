@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
 import Pagination from '../../components/pagination/pagination.component'
 import UserItem from '../../components/user-item/user-item.component'
 import { usePagination } from '../../hooks/use-pagination/use-pagination.hook'
@@ -8,6 +9,7 @@ import { getUsers } from '../../services/user.service'
 import styles from './users.page.module.css'
 
 export default function UsersPage() {
+  const { pathname } = useLocation()
   const [users, setUsers] = useState<User[]>([])
   const { page, limit, totalPages, setTotalPages, prevPage, nextPage } =
     usePagination({
@@ -35,7 +37,7 @@ export default function UsersPage() {
         />
       }
       title="Users"
-      createPath="/users-add"
+      createPath={`${pathname}../users-add`}
       onRefresh={fetchUsers}
     >
       {users.map((user: User, index: number) => (
