@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  height: 60px;
+  align-items: center;
+  gap: 0;
+  padding: 10px 30px;
+  background-color: var(--background2);
+  border-radius: var(--border-radius);
+}
+
+.deleteIcon {
+  height: 70%;
+  color: var(--tertiary);
+  cursor: pointer;
+}
+
+.firstColumn {
+  min-width: 200px;
+}
+
+.secondColumn {
+  min-width: 100px;
+}
+
+.thirdColumn {
+  min-width: 100px;
+}

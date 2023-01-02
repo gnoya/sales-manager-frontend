@@ -3,6 +3,8 @@ import { lazy } from 'react'
 
 import PrivateRoutes from '../../guards/private-routes/private-routes'
 import DashboardLayout from '../../layouts/dashboard/dashboard.layout'
+import UsersPage from '../../pages/users/users.page'
+import UsersAddPage from '../../pages/users-add/users-add.page'
 
 const ProductsAddPage = lazy(
   () => import('../../pages/products-add/products-add.page')
@@ -25,6 +27,8 @@ export default function DashboardRouter() {
           <Route path="/sale/:id" element={<SalePage />} />
           <Route path="/sales-add" element={<SalesAddPage />} />
           <Route path="/sales" element={<SalesPage />} />
+          <Route path="/users/" element={<UsersPage />} />
+          <Route path="/users-add" element={<UsersAddPage />} />
         </Route>
       </Route>
 
