@@ -30,6 +30,8 @@
   --z-1: 1;
   --z-10: 10;
 
+  --scrollbar-width: 8px;
+
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
 }
@@ -72,7 +74,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: var(--scrollbar-width);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -83,7 +85,7 @@ a {
 }
 
 ::-webkit-scrollbar:horizontal {
-  height: 8px;
+  height: var(--scrollbar-width);
 }
 
 :focus {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { User } from '../../models/user'
+import { User } from '../../models/user.model'
 import { getUserFromStorage } from '../../services/auth.service'
 
 export function useAuthStates() {

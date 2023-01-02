@@ -1,0 +1,41 @@
+.button {
+  border: none;
+  padding: 10px 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  width: 100%;
+  text-align: center;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+.main,
+.secondary {
+  color: white;
+}
+
+.main {
+  background: var(--primary);
+}
+
+.secondary {
+  background: var(--secondary);
+}
+
+.mainRegular,
+.secondaryRegular {
+  background: var(--background1);
+}
+
+.mainRegular {
+  color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary) inset;
+}
+
+.secondaryRegular {
+  color: var(--secondary);
+  box-shadow: 0 0 0 2px var(--secondary) inset;
+}

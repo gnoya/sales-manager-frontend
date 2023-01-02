@@ -1,0 +1,13 @@
+.buttonLink {
+  border: none;
+  padding: 10px 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  width: 100%;
+  text-align: center;
+}
+
+.buttonLink:disabled {
+  opacity: 0.5;
+}

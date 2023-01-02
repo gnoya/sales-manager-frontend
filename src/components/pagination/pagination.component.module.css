@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+  gap: 0 10px;
+}
+
+.container span {
+  margin: 0 auto;
+  min-width: max-content;
+}
+
+.prevPageButton,
+.nextPageButton {
+  display: grid;
+  place-content: center;
+  aspect-ratio: 2 / 1;
+  width: auto;
+  height: 100%;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary);
+  color: var(--background1);
+}
+
+.prevPageButton:disabled,
+.nextPageButton:disabled {
+  opacity: 0.5;
+}
+
+.prevPageButtonIcon,
+.nextPageButtonIcon {
+  display: block;
+  width: 100%;
+}

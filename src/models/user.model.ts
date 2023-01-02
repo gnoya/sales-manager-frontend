@@ -9,8 +9,7 @@ export interface User {
 }
 
 export function transformUser(data: any): User {
-  const { id, fullName, identification, phone, email, address, token } =
-    data.data
+  const { id, fullName, identification, phone, email, address, token } = data
 
   return { id, fullName, identification, phone, email, address, token }
 }

@@ -5,7 +5,7 @@ export interface Product {
 }
 
 export function transformProduct(data: any): Product {
-  const { id, name, quantity } = data.data
+  const { id, name, quantity } = data
 
   return { id, name, quantity }
 }

@@ -1,5 +1,5 @@
 import { mockProducts } from '../mock-data/mock-data'
-import { Product, transformProductArray } from '../models/product'
+import { Product, transformProductArray } from '../models/product.model'
 import { privateHTTP } from './http.service'
 
 export async function createProduct(
@@ -25,5 +25,5 @@ export async function getProducts(): Promise<Product[]> {
   // const response = await privateHTTP.get('/product.service/products')
   const response = { data: mockProducts }
 
-  return transformProductArray(response)
+  return transformProductArray(response.data)
 }

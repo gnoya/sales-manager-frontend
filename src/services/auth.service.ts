@@ -1,5 +1,5 @@
 import { mockUser } from '../mock-data/mock-data'
-import { transformUser, User } from '../models/user'
+import { transformUser, User } from '../models/user.model'
 import { publicHTTP } from './http.service'
 
 export interface SignInParams {

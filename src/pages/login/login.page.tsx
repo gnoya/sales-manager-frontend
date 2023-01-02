@@ -1,5 +1,5 @@
 import Title from '../../components/title/title.component'
-import { usePageTitle } from '../../hooks/use-page-title/use-page-title'
+import { usePageTitle } from '../../hooks/use-page-title/use-page-title.hook'
 import styles from './login.page.module.css'
 
 export default function LoginPage() {

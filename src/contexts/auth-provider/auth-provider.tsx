@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from 'react'
-import { User } from '../../models/user'
+import { User } from '../../models/user.model'
 import { useAuthStates } from './use-auth-state'
 
 class AuthContext {

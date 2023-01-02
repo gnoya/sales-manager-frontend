@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../../components/sidebar/sidebar.component'
-import { usePageTitle } from '../../hooks/use-page-title/use-page-title'
+import { usePageTitle } from '../../hooks/use-page-title/use-page-title.hook'
 import styles from './dashboard.layout.module.css'
 
 interface DashboardLayoutProps {
