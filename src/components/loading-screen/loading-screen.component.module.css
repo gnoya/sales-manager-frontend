@@ -3,6 +3,7 @@
   place-content: center;
   height: 100%;
   width: 100%;
+  background-color: var(--background2);
 }
 
 .fullViewport {

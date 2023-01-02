@@ -6,7 +6,7 @@ interface LoadingScreenProps {
 }
 export default function LoadingScreen({
   fullViewport = false,
-  transparentBG = false,
+  transparentBG = true,
 }: LoadingScreenProps) {
   return (
     <div

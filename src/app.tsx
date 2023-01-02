@@ -10,7 +10,7 @@ function App() {
   return (
     <StrictMode>
       <BrowserRouter>
-        <Suspense fallback={<LoadingScreen />}>
+        <Suspense fallback={<LoadingScreen fullViewport />}>
           <LoadingProvider>
             <AuthProvider>
               <RootRouter />
