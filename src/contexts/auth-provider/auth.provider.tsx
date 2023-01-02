@@ -1,6 +1,6 @@
 import { createContext, ReactNode } from 'react'
 import { User } from '../../models/user.model'
-import { useAuthStates } from './use-auth-state'
+import { useAuthState } from './use-auth-state.hook'
 
 class AuthContext {
   signedIn = false
@@ -15,7 +15,7 @@ interface AuthProviderProps {
   children?: ReactNode
 }
 export default function AuthProvider(props: AuthProviderProps) {
-  const contextValue = useAuthStates()
+  const contextValue = useAuthState()
 
   return (
     <authContext.Provider value={contextValue}>

@@ -6,7 +6,6 @@ import { usePagination } from '../../hooks/use-pagination/use-pagination.hook'
 import ListLayout from '../../layouts/list/list.layout'
 import { Sale } from '../../models/sale.model'
 import { getSales } from '../../services/sale.service'
-import styles from './sales.page.module.css'
 
 export default function SalesPage() {
   const { pathname } = useLocation()

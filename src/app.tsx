@@ -2,13 +2,21 @@ import { StrictMode, Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import RootRouter from './routers/root/root.router'
 import { Toaster } from 'react-hot-toast'
+import AuthProvider from './contexts/auth-provider/auth.provider'
+import LoadingProvider from './contexts/loading-provider/loading.provider'
+import LoadingScreen from './components/loading-screen/loading-screen.component'
 
 function App() {
   return (
     <StrictMode>
       <BrowserRouter>
-        <Suspense fallback={<div>Loading... </div>}>
-          <RootRouter />
+        <Suspense fallback={<LoadingScreen />}>
+          <LoadingProvider>
+            <AuthProvider>
+              <RootRouter />
+            </AuthProvider>
+          </LoadingProvider>
+
           <Toaster
             position="top-center"
             toastOptions={{

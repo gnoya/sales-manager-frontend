@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faArrowsRotate } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './list.layout.module.css'
+import { useLoading } from '../../hooks/use-loading/use-loading.hook'
+import LoadingScreen from '../../components/loading-screen/loading-screen.component'
 
 interface ListLayoutProps {
   title: string
@@ -22,32 +24,40 @@ export default function ListLayout({
   onRefresh,
   children,
 }: ListLayoutProps) {
+  const { isLoading } = useLoading()
+
   return (
     <div className={styles.container}>
-      <Title>{title}</Title>
-      <div className={styles.rowContainer}>
-        {pagination}
-        <div className={styles.actionButtonsContainer}>
-          <Button
-            variant="main"
-            onClick={onRefresh}
-            className={styles.refreshButton}
-          >
-            <FontAwesomeIcon
-              icon={faArrowsRotate}
-              className={styles.refreshIcon}
-            />
-          </Button>
-          <ButtonLink
-            variant="main"
-            to={createPath}
-            className={styles.createButton}
-          >
-            <FontAwesomeIcon icon={faPlus} className={styles.createIcon} />
-          </ButtonLink>
-        </div>
-      </div>
-      <div className={styles.listContainer}>{children}</div>
+      {!isLoading ? (
+        <>
+          <Title>{title}</Title>
+          <div className={styles.rowContainer}>
+            {pagination}
+            <div className={styles.actionButtonsContainer}>
+              <Button
+                variant="main"
+                onClick={onRefresh}
+                className={styles.refreshButton}
+              >
+                <FontAwesomeIcon
+                  icon={faArrowsRotate}
+                  className={styles.refreshIcon}
+                />
+              </Button>
+              <ButtonLink
+                variant="main"
+                to={createPath}
+                className={styles.createButton}
+              >
+                <FontAwesomeIcon icon={faPlus} className={styles.createIcon} />
+              </ButtonLink>
+            </div>
+          </div>
+          <div className={styles.listContainer}>{children}</div>
+        </>
+      ) : (
+        <LoadingScreen />
+      )}
     </div>
   )
 }

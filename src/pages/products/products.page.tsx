@@ -2,15 +2,17 @@ import { useCallback, useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import Pagination from '../../components/pagination/pagination.component'
 import ProductItem from '../../components/product-item/product-item.component'
-import Title from '../../components/title/title.component'
+import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
+import { useLoading } from '../../hooks/use-loading/use-loading.hook'
 import { usePagination } from '../../hooks/use-pagination/use-pagination.hook'
 import ListLayout from '../../layouts/list/list.layout'
 import { Product } from '../../models/product.model'
 import { getProducts } from '../../services/product.service'
-import styles from './products.page.module.css'
 
 export default function ProductsPage() {
   const { pathname } = useLocation()
+  const { startLoading, stopLoading } = useLoading()
+  const handleError = useErrorHandler()
   const [products, setProducts] = useState<Product[]>([])
   const { page, limit, totalPages, setTotalPages, prevPage, nextPage } =
     usePagination({
@@ -18,9 +20,17 @@ export default function ProductsPage() {
     })
 
   const fetchProducts = useCallback(async () => {
-    const { products, pagination } = await getProducts(page, limit)
-    setProducts(products)
-    setTotalPages(pagination.last)
+    startLoading()
+
+    try {
+      const { products, pagination } = await getProducts(page, limit)
+      setProducts(products)
+      setTotalPages(pagination.last)
+    } catch (err) {
+      handleError(err)
+    }
+
+    stopLoading()
   }, [page, limit, setProducts, setTotalPages])
 
   useEffect(() => {
