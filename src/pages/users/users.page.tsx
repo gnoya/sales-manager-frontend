@@ -31,7 +31,15 @@ export default function UsersPage() {
     }
 
     stopLoading()
-  }, [page, limit, setUsers, setTotalPages])
+  }, [
+    page,
+    limit,
+    setUsers,
+    setTotalPages,
+    handleError,
+    startLoading,
+    stopLoading,
+  ])
 
   useEffect(() => {
     fetchUsers()

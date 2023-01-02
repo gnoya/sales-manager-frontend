@@ -1,5 +1,4 @@
 import { createContext, ReactNode } from 'react'
-import { User } from '../../models/user.model'
 import { useLoadingState } from './use-loading-state.hook'
 
 class LoadingContext {

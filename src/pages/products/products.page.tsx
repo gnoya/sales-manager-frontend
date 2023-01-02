@@ -31,7 +31,15 @@ export default function ProductsPage() {
     }
 
     stopLoading()
-  }, [page, limit, setProducts, setTotalPages])
+  }, [
+    page,
+    limit,
+    setProducts,
+    setTotalPages,
+    handleError,
+    startLoading,
+    stopLoading,
+  ])
 
   useEffect(() => {
     fetchProducts()
