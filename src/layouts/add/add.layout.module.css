@@ -1,0 +1,45 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 80px;
+  height: 100vh;
+  gap: 30px 0;
+}
+
+.rowContainer,
+.backButton {
+  height: 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 10px;
+}
+
+.rowContainer {
+  width: 100%;
+}
+
+.backButton {
+  width: max-content;
+  cursor: pointer;
+}
+
+.rowContainer span {
+  width: max-content;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.childrenContainer {
+  width: 100%;
+}
+
+.backIcon {
+  height: 100%;
+}
