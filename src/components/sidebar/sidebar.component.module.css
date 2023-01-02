@@ -43,6 +43,7 @@
 .icon {
   color: var(--primary);
   height: 25%;
+  aspect-ratio: 1 / 1;
 }
 
 .logo {
