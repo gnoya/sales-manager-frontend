@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--secondary);
+}
+
+.formContainer {
+  width: 50%;
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px 0;
+  border-radius: var(--border-radius);
+  padding: 40px 30px 30px 30px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  background-color: white;
+}
+
+.form {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 40px 0;
+  border-radius: var(--border-radius);
+  background-color: var(--background1);
+  padding: 40px 30px 30px 30px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.6);
+}
+
+.body {
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 20px 0;
+}
+
+.submitButton {
+  justify-self: center;
+}
+
+.title {
+  text-align: center;
+}

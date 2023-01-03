@@ -17,6 +17,6 @@ export function transformProductArray(data: any): Product[] {
 }
 
 export const productFormValidation = Yup.object({
-  name: Yup.string().required(),
-  quantity: Yup.number().min(0).required(),
+  name: Yup.string().required('Name is required'),
+  quantity: Yup.number().min(0).required('Quantity is required'),
 })

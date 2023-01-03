@@ -38,6 +38,6 @@ export function transformSaleArray(data: any): Sale[] {
 }
 
 export const saleFormValidation = Yup.object({
-  quantity: Yup.number().min(0).required(),
-  deliveryDate: Yup.string().required(),
+  quantity: Yup.number().min(0).required('Quantity is required'),
+  deliveryDate: Yup.string().required('Delivery date is required'),
 })

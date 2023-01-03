@@ -21,8 +21,8 @@ export function transformUserArray(data: any): User[] {
 }
 
 export const userFormValidation = Yup.object({
-  fullName: Yup.string().required(),
-  identification: Yup.string().required(),
-  phone: Yup.string().required(),
-  address: Yup.string().required(),
+  fullName: Yup.string().required('Name is required'),
+  identification: Yup.string().required('Identification is required'),
+  phone: Yup.string().required('Phone is required'),
+  address: Yup.string().required('Address is required'),
 })

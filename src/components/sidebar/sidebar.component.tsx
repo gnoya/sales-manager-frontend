@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCartShopping,
@@ -9,15 +9,11 @@ import {
 
 import styles from './sidebar.component.module.css'
 import Button from '../button/button.component'
-import { signOut } from '../../services/auth.service'
+import { useLogout } from '../../hooks/use-logout/use-logout.hook'
 
 export default function Sidebar() {
-  const navigate = useNavigate()
+  const logout = useLogout()
 
-  function logout() {
-    signOut()
-    navigate('/')
-  }
   return (
     <div className={styles.container}>
       <FontAwesomeIcon icon={faCartShopping} className={styles.logo} />
