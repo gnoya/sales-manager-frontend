@@ -37,7 +37,6 @@ export default function SalesAddPage() {
   }
 
   async function submit(values: typeof initialValues) {
-    console.log('a')
     if (!areUserAndProductPicked()) return
     startLoading()
 
