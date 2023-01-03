@@ -1,6 +1,10 @@
 import { mockPagination, mockProducts } from '../mock-data/mock-data'
 import { Pagination } from '../models/pagination.model'
-import { Product, transformProductArray } from '../models/product.model'
+import {
+  Product,
+  transformProduct,
+  transformProductArray,
+} from '../models/product.model'
 import { privateHTTP } from './http.service'
 
 export async function createProduct(
@@ -24,6 +28,7 @@ export async function updateProduct(
   name?: string,
   quantity?: number
 ): Promise<void> {
+  console.log(id, name, quantity)
   return
 
   await privateHTTP.put(`/product.service/products/${id}`, { name, quantity })
@@ -50,4 +55,12 @@ export async function getProductsByName(name: string): Promise<Product[]> {
   const response = { data: mockProducts }
 
   return transformProductArray(response.data)
+}
+
+export async function getProduct(id: string): Promise<Product> {
+  console.log(`Getting with id ${id}`)
+  // const response = await privateHTTP.get(`/product.service/products/${id}`)
+  const response = { data: mockProducts[0] }
+
+  return transformProduct(response.data)
 }
