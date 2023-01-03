@@ -34,7 +34,7 @@ export default function Sidebar() {
         <div className={styles.logoContainer}>
           <FontAwesomeIcon icon={faCartShopping} className={styles.logo} />
         </div>
-        <p>Welcome, {user?.fullName}</p>
+        <p>{user?.fullName}</p>
       </div>
 
       <div className={styles.middleSection}>
