@@ -56,7 +56,7 @@ export default function ProductsPage() {
         />
       }
       title="Products"
-      createPath={`${pathname}../products-add`}
+      createPath={`${pathname}../products/add`}
       onRefresh={fetchProducts}
     >
       {products.map((product: Product, index: number) => (

@@ -48,7 +48,7 @@ export default function ProductItem({
   }
 
   function editItem() {
-    navigate(`${pathname}../products-edit`)
+    navigate(`${pathname}../products/edit/${product.id}`)
   }
 
   return (

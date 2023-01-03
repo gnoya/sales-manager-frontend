@@ -56,7 +56,7 @@ export default function UsersPage() {
         />
       }
       title="Users"
-      createPath={`${pathname}../users-add`}
+      createPath={`${pathname}../users/add`}
       onRefresh={fetchUsers}
     >
       {users.map((user: User, index: number) => (

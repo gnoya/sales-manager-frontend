@@ -24,13 +24,13 @@ export default function DashboardRouter() {
       <Route element={<PrivateRoutes />}>
         <Route element={<DashboardLayout pageTitle="Dashboard" />}>
           <Route path="/products/" element={<ProductsPage />} />
-          <Route path="/products-add/" element={<ProductsAddPage />} />
-          <Route path="/products-edit/" element={<ProductsEditPage />} />
+          <Route path="/products/add/" element={<ProductsAddPage />} />
+          <Route path="/products/edit/:id/" element={<ProductsEditPage />} />
           <Route path="/sale/:id/" element={<SalePage />} />
-          <Route path="/sales-add/" element={<SalesAddPage />} />
+          <Route path="/sales/add/" element={<SalesAddPage />} />
           <Route path="/sales/" element={<SalesPage />} />
           <Route path="/users/" element={<UsersPage />} />
-          <Route path="/users-add/" element={<UsersAddPage />} />
+          <Route path="/users/add/" element={<UsersAddPage />} />
         </Route>
       </Route>
 

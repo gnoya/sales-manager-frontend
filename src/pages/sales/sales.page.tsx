@@ -56,7 +56,7 @@ export default function SalesPage() {
         />
       }
       title="Sales"
-      createPath={`${pathname}../sales-add`}
+      createPath={`${pathname}../sales/add`}
       onRefresh={fetchSales}
     >
       {sales.map((sale: Sale, index: number) => (
