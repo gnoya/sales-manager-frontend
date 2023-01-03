@@ -5,15 +5,15 @@ export interface User {
   fullName: string
   identification: string
   phone: string
+  address: string
   email?: string
-  address?: string
   token?: string
 }
 
 export function transformUser(data: any): User {
-  const { id, fullName, identification, phone, email, address, token } = data
+  const { id, fullName, identification, phone, address, email, token } = data
 
-  return { id, fullName, identification, phone, email, address, token }
+  return { id, fullName, identification, phone, address, email, token }
 }
 
 export function transformUserArray(data: any): User[] {
@@ -24,6 +24,5 @@ export const userFormValidation = Yup.object({
   fullName: Yup.string().required(),
   identification: Yup.string().required(),
   phone: Yup.string().required(),
-  email: Yup.string().required(),
-  address: Yup.string().optional(),
+  address: Yup.string().required(),
 })

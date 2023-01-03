@@ -9,11 +9,17 @@ import styles from './user-item.component.module.css'
 
 interface UserItemProps {
   user: User
+  hideActionButtons?: boolean
   onClick?: () => void
   onDelete: () => void
 }
 
-export default function UserItem({ user, onClick, onDelete }: UserItemProps) {
+export default function UserItem({
+  user,
+  hideActionButtons = false,
+  onClick,
+  onDelete,
+}: UserItemProps) {
   const modal = useModal()
   const handleError = useErrorHandler()
 
@@ -41,13 +47,15 @@ export default function UserItem({ user, onClick, onDelete }: UserItemProps) {
     <div className={styles.container} onClick={onClick}>
       <p className={styles.firstColumn}>{user.fullName}</p>
       <p className={styles.secondColumn}>{user.phone}</p>
-      <div className={styles.forthColumn}>
-        <FontAwesomeIcon
-          onClick={deleteItem}
-          icon={faTrashCan}
-          className={styles.deleteIcon}
-        />
-      </div>
+      {!hideActionButtons && (
+        <div className={styles.forthColumn}>
+          <FontAwesomeIcon
+            onClick={deleteItem}
+            icon={faTrashCan}
+            className={styles.deleteIcon}
+          />
+        </div>
+      )}
     </div>
   )
 }

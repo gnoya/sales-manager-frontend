@@ -11,12 +11,14 @@ import { useLocation, useNavigate } from 'react-router'
 
 interface ProductItemProps {
   product: Product
+  hideActionButtons?: boolean
   onClick?: () => void
   onDelete: () => void
 }
 
 export default function ProductItem({
   product,
+  hideActionButtons = false,
   onClick,
   onDelete,
 }: ProductItemProps) {
@@ -53,18 +55,21 @@ export default function ProductItem({
     <div className={styles.container} onClick={onClick}>
       <p className={styles.firstColumn}>{product.name}</p>
       <p className={styles.secondColumn}>{product.quantity}</p>
-      <div className={styles.thirdColumn}>
-        <FontAwesomeIcon
-          onClick={editItem}
-          icon={faPen}
-          className={styles.deleteIcon}
-        />
-        <FontAwesomeIcon
-          onClick={deleteItem}
-          icon={faTrashCan}
-          className={styles.deleteIcon}
-        />
-      </div>
+
+      {!hideActionButtons && (
+        <div className={styles.thirdColumn}>
+          <FontAwesomeIcon
+            onClick={editItem}
+            icon={faPen}
+            className={styles.deleteIcon}
+          />
+          <FontAwesomeIcon
+            onClick={deleteItem}
+            icon={faTrashCan}
+            className={styles.deleteIcon}
+          />
+        </div>
+      )}
     </div>
   )
 }

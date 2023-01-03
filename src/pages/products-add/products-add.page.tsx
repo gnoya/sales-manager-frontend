@@ -2,7 +2,6 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Input from '../../components/input/input.component'
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
 import AddLayout from '../../layouts/add/add.layout'
-import { Product, productFormValidation } from '../../models/product.model'
 
 import styles from './products-add.page.module.css'
 import InvalidInputMessage from '../../components/invalid-input-message/invalid-input-message.component'
@@ -10,8 +9,10 @@ import Button from '../../components/button/button.component'
 import InputContainer from '../../components/input-container/input-container.component'
 import Title from '../../components/title/title.component'
 import { useNavigate } from 'react-router'
-import { createProduct } from '../../services/product.service'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
+
+import { createProduct } from '../../services/product.service'
+import { Product, productFormValidation } from '../../models/product.model'
 
 export default function ProductsAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()

@@ -4,18 +4,18 @@ import { User, transformUser, transformUserArray } from '../models/user.model'
 import { privateHTTP } from './http.service'
 
 export async function createUser(
-  productId: string,
-  userId: string,
-  quantity: number,
-  deliveryDate: string
+  fullName: string,
+  identification: string,
+  phone: string,
+  address: string
 ): Promise<void> {
   return
 
   await privateHTTP.post('/user.service/users', {
-    productId,
-    userId,
-    quantity,
-    deliveryDate,
+    fullName,
+    identification,
+    phone,
+    address,
   })
 }
 
