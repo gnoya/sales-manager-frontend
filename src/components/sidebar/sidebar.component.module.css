@@ -2,19 +2,60 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0;
   padding: 50px 0px 30px;
-  width: 200px;
+  width: 100%;
+  height: 100%;
   background-color: var(--secondary);
-  height: 100vh;
+}
+
+.topSection {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  gap: 20px 0;
+  height: 250px;
+  width: 100%;
+}
+
+.topSection p {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.middleSection {
+  width: 100%;
+}
+
+.logoContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.bottomSection {
+  margin-top: auto;
+  width: 100%;
 }
 
 .buttonText {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: var(--primary);
   margin: 0;
   padding: 0;
+  color: white;
+  font-weight: 300;
 }
 
 .button,
@@ -24,15 +65,11 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 70px;
-  gap: 0 10px;
+  height: 55px;
+  gap: 0 15px;
   outline: none;
-  padding: 0 20px !important;
+  padding: 0 0 0 30px !important;
   border-radius: 0 !important;
-}
-
-.buttonsContainer {
-  width: 100%;
 }
 
 .button:hover,
@@ -45,8 +82,11 @@
   color: var(--primary);
   height: 25%;
   aspect-ratio: 1 / 1;
+  color: white;
 }
 
 .logo {
-  height: 70px;
+  margin: 0 auto;
+  height: 50px;
+  color: var(--secondary-darker);
 }

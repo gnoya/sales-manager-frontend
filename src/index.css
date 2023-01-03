@@ -14,7 +14,7 @@
   --secondary: #2dace3;
   --tertiary: #2dace3;
 
-  --secondary-darker: #2193c4;
+  --secondary-darker: #259acc;
 
   /* Backgrounds */
   --background1: #fafafa;
@@ -44,7 +44,8 @@ body {
 body,
 button,
 input,
-textarea {
+textarea,
+p {
   font-family: var(--body-font);
   line-height: 1.25;
 }

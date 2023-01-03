@@ -30,6 +30,7 @@ export default function UserItem({
       title: 'Deleting user',
       text: 'Do you want to remove this user?',
       confirmButtonText: 'Delete',
+      showCancelButton: false,
     })
 
     if (confirmation.isConfirmed) {
