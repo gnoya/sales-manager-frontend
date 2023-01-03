@@ -5,13 +5,13 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
 import { useNavigate } from 'react-router'
 import LoadingScreen from '../../components/loading-screen/loading-screen.component'
-import styles from './add.layout.module.css'
+import styles from './back-button.layout.module.css'
 
-interface AddLayoutProps {
+interface BackButtonLayoutProps {
   children?: ReactNode
 }
 
-export default function AddLayout({ children }: AddLayoutProps) {
+export default function BackButtonLayout({ children }: BackButtonLayoutProps) {
   const { isLoading } = useLoading()
   const navigate = useNavigate()
 

@@ -43,5 +43,5 @@ export async function getSale(id: string): Promise<Sale> {
   // const response = await privateHTTP.get(`/sale.service/sales/${id}`)
   const response = { data: mockSale }
 
-  return transformSale(response)
+  return transformSale(response.data)
 }

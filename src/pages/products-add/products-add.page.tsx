@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Input from '../../components/input/input.component'
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
-import AddLayout from '../../layouts/add/add.layout'
+import BackButtonLayout from '../../layouts/back-button/back-button.layout'
 
 import styles from './products-add.page.module.css'
 import InvalidInputMessage from '../../components/invalid-input-message/invalid-input-message.component'
@@ -38,7 +38,7 @@ export default function ProductsAddPage() {
   }
 
   return (
-    <AddLayout>
+    <BackButtonLayout>
       <Formik
         initialValues={initialValues}
         validationSchema={productFormValidation}
@@ -80,6 +80,6 @@ export default function ProductsAddPage() {
           </div>
         </Form>
       </Formik>
-    </AddLayout>
+    </BackButtonLayout>
   )
 }

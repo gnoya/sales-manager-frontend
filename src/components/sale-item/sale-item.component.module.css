@@ -8,6 +8,7 @@
   padding: 10px 30px;
   background-color: var(--background2);
   border-radius: var(--border-radius);
+  cursor: pointer;
 }
 
 .deleteIcon {

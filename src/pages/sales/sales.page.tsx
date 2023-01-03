@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 import Pagination from '../../components/pagination/pagination.component'
 import SaleItem from '../../components/sale-item/sale-item.component'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
@@ -11,6 +11,7 @@ import { getSales } from '../../services/sale.service'
 
 export default function SalesPage() {
   const { pathname } = useLocation()
+  const navigate = useNavigate()
   const { startLoading, stopLoading } = useLoading()
   const handleError = useErrorHandler()
   const [sales, setSales] = useState<Sale[]>([])
@@ -60,7 +61,12 @@ export default function SalesPage() {
       onRefresh={fetchSales}
     >
       {sales.map((sale: Sale, index: number) => (
-        <SaleItem key={index} sale={sale} onDelete={fetchSales} />
+        <SaleItem
+          key={index}
+          sale={sale}
+          onDelete={fetchSales}
+          onClick={() => navigate(`${pathname}${sale.id}`)}
+        />
       ))}
     </ListLayout>
   )

@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Input from '../../components/input/input.component'
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
-import AddLayout from '../../layouts/add/add.layout'
+import BackButtonLayout from '../../layouts/back-button/back-button.layout'
 import styles from './sales-add.page.module.css'
 import InvalidInputMessage from '../../components/invalid-input-message/invalid-input-message.component'
 import Button from '../../components/button/button.component'
@@ -28,7 +28,7 @@ export default function SalesAddPage() {
   const handleError = useErrorHandler()
 
   const initialValues: Omit<Sale, 'id' | 'productId' | 'userId'> = {
-    quantity: 0,
+    quantity: 1,
     deliveryDate: new Date().toLocaleString(),
   }
 
@@ -56,7 +56,7 @@ export default function SalesAddPage() {
   }
 
   return (
-    <AddLayout>
+    <BackButtonLayout>
       <Formik
         initialValues={initialValues}
         validationSchema={saleFormValidation}
@@ -129,6 +129,6 @@ export default function SalesAddPage() {
           }}
         />
       )}
-    </AddLayout>
+    </BackButtonLayout>
   )
 }

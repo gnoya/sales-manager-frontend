@@ -35,7 +35,7 @@ export default function ListLayout({
             {pagination}
             <div className={styles.actionButtonsContainer}>
               <Button
-                variant="main"
+                variant="secondary"
                 onClick={onRefresh}
                 className={styles.refreshButton}
               >
@@ -45,7 +45,7 @@ export default function ListLayout({
                 />
               </Button>
               <ButtonLink
-                variant="main"
+                variant="secondary"
                 to={createPath}
                 className={styles.createButton}
               >

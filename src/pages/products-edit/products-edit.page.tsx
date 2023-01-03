@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import Input from '../../components/input/input.component'
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
-import AddLayout from '../../layouts/add/add.layout'
+import BackButtonLayout from '../../layouts/back-button/back-button.layout'
 import { useCallback, useEffect, useState } from 'react'
 
 import styles from './products-edit.page.module.css'
@@ -42,7 +42,7 @@ export default function ProductsEditPage() {
     stopLoading()
   }
 
-  const fetchSale = useCallback(async () => {
+  const fetchProduct = useCallback(async () => {
     startLoading()
 
     try {
@@ -56,11 +56,11 @@ export default function ProductsEditPage() {
   }, [id, setProduct, handleError, startLoading, stopLoading])
 
   useEffect(() => {
-    fetchSale()
-  }, [fetchSale])
+    fetchProduct()
+  }, [fetchProduct])
 
   return (
-    <AddLayout>
+    <BackButtonLayout>
       <Formik
         initialValues={initialValues}
         validationSchema={productFormValidation}
@@ -103,6 +103,6 @@ export default function ProductsEditPage() {
           </div>
         </Form>
       </Formik>
-    </AddLayout>
+    </BackButtonLayout>
   )
 }
