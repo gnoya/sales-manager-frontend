@@ -6,12 +6,14 @@ export type ButtonVariant =
   | 'main-regular'
   | 'secondary'
   | 'secondary-regular'
+  | 'transparent'
 
 export const styleMap: Record<ButtonVariant, string> = {
   'main': styles.main,
   'main-regular': styles.mainRegular,
   'secondary': styles.secondary,
   'secondary-regular': styles.secondaryRegular,
+  'transparent': styles.transparent,
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

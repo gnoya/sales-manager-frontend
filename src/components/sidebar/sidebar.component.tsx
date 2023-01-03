@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCartShopping,
@@ -8,8 +8,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './sidebar.component.module.css'
+import Button from '../button/button.component'
+import { signOut } from '../../services/auth.service'
 
 export default function Sidebar() {
+  const navigate = useNavigate()
+
+  function logout() {
+    signOut()
+    navigate('/')
+  }
   return (
     <div className={styles.container}>
       <FontAwesomeIcon icon={faCartShopping} className={styles.logo} />
@@ -42,15 +50,10 @@ export default function Sidebar() {
           <p className={styles.buttonText}>Users</p>
         </NavLink>
       </div>
-      <NavLink
-        to="/logout"
-        className={({ isActive }) =>
-          isActive ? styles.buttonActive : styles.button
-        }
-      >
+      <Button variant="transparent" className={styles.button} onClick={logout}>
         <FontAwesomeIcon icon={faRightFromBracket} className={styles.icon} />
         <p className={styles.buttonText}>Logout</p>
-      </NavLink>
+      </Button>
     </div>
   )
 }
