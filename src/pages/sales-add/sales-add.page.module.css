@@ -7,7 +7,7 @@
   padding: 40px 30px 30px 30px;
   width: 100%;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 500px;
   box-shadow: 0 0 20px rgba(128, 128, 128, 0.6);
 }
 
@@ -19,4 +19,15 @@
 
 .submitButton {
   justify-self: center;
+}
+
+.pickRow {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  align-items: center;
+}
+
+.pickRow span {
+  font-size: 0.9rem;
 }

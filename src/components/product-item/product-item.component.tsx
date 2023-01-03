@@ -13,7 +13,7 @@ interface ProductItemProps {
   product: Product
   hideActionButtons?: boolean
   onClick?: () => void
-  onDelete: () => void
+  onDelete?: () => void
 }
 
 export default function ProductItem({
@@ -40,7 +40,7 @@ export default function ProductItem({
       try {
         await deleteProduct(product.id)
         toast.success('Product deleted succesfully')
-        onDelete()
+        onDelete && onDelete()
       } catch (err) {
         handleError(err)
       }

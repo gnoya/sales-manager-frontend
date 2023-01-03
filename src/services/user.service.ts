@@ -44,3 +44,11 @@ export async function getUser(id: string): Promise<User> {
 
   return transformUser(response)
 }
+
+export async function getUsersByName(fullName: string): Promise<User[]> {
+  console.log(`Getting by name ${fullName}`)
+  // const response = await privateHTTP.get('/user.service/users')
+  const response = { data: mockUsers }
+
+  return transformUserArray(response.data)
+}

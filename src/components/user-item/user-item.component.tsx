@@ -11,7 +11,7 @@ interface UserItemProps {
   user: User
   hideActionButtons?: boolean
   onClick?: () => void
-  onDelete: () => void
+  onDelete?: () => void
 }
 
 export default function UserItem({
@@ -36,7 +36,7 @@ export default function UserItem({
       try {
         await deleteUser(user.id)
         toast.success('User deleted succesfully')
-        onDelete()
+        onDelete && onDelete()
       } catch (err) {
         handleError(err)
       }

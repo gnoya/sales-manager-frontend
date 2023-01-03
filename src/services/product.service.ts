@@ -43,3 +43,11 @@ export async function getProducts(
 
   return { products: transformProductArray(response.data), pagination }
 }
+
+export async function getProductsByName(name: string): Promise<Product[]> {
+  console.log(`Getting with name ${name}`)
+  // const response = await privateHTTP.get('/product.service/products')
+  const response = { data: mockProducts }
+
+  return transformProductArray(response.data)
+}

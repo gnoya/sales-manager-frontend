@@ -9,6 +9,7 @@ export async function createSale(
   quantity: number,
   deliveryDate: string
 ): Promise<void> {
+  console.log(productId, userId, quantity, deliveryDate)
   return
 
   await privateHTTP.post('/sale.service/sales', {

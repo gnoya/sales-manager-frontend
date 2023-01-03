@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import styles from './input-container.component.module.css'
 
 interface InputContainerProps {
-  label: string
+  label?: string
   children?: ReactNode
 }
 export default function InputContainer({
@@ -11,7 +11,7 @@ export default function InputContainer({
 }: InputContainerProps) {
   return (
     <div className={styles.container}>
-      <span>{label}</span>
+      {label && <span>{label}</span>}
       {children}
     </div>
   )

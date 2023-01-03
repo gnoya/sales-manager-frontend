@@ -9,29 +9,42 @@ import InputContainer from '../../components/input-container/input-container.com
 import Title from '../../components/title/title.component'
 import { useNavigate } from 'react-router'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
-
 import { createSale } from '../../services/sale.service'
 import { Sale, saleFormValidation } from '../../models/sale.model'
+import ProductSearch from '../../components/product-search/product-search.component'
+import { Product } from '../../models/product.model'
+import { useState } from 'react'
+import UserSearch from '../../components/user-search/user-search.component'
+import { User } from '../../models/user.model'
 
 export default function SalesAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
+  const [showProductPicker, setShowProductPicker] = useState<boolean>(false)
+  const [showUserPicker, setShowUserPicker] = useState<boolean>(false)
+  const [selectedProduct, setSelectedProduct] = useState<Product>()
+  const [selectedUser, setSelectedUser] = useState<User>()
+
   const navigate = useNavigate()
   const handleError = useErrorHandler()
 
-  const initialValues: Omit<Sale, 'id'> = {
-    productId: '',
-    userId: '',
+  const initialValues: Omit<Sale, 'id' | 'productId' | 'userId'> = {
     quantity: 0,
-    deliveryDate: new Date().toISOString(),
+    deliveryDate: new Date().toLocaleString(),
+  }
+
+  function areUserAndProductPicked() {
+    return selectedProduct !== undefined && selectedUser !== undefined
   }
 
   async function submit(values: typeof initialValues) {
+    console.log('a')
+    if (!areUserAndProductPicked()) return
     startLoading()
 
     try {
       await createSale(
-        values.productId,
-        values.userId,
+        selectedProduct?.id || '',
+        selectedUser?.id || '',
         values.quantity,
         values.deliveryDate
       )
@@ -53,17 +66,18 @@ export default function SalesAddPage() {
         <Form className={styles.form}>
           <Title>Add a new sale</Title>
           <div className={styles.body}>
-            <InputContainer label="Name">
-              <Field
-                as={Input}
-                type="text"
-                name="name"
-                placeholder={'Name'}
-                enterKeyHint="next"
-                disabled={isLoading}
-              />
-              <ErrorMessage name="name" component={InvalidInputMessage} />
-            </InputContainer>
+            <div className={styles.pickRow}>
+              <span>{selectedProduct?.name || 'Select the product:'}</span>
+              <Button variant="main" onClick={() => setShowProductPicker(true)}>
+                Select product
+              </Button>
+            </div>
+            <div className={styles.pickRow}>
+              <span>{selectedUser?.fullName || 'Select the user:'}</span>
+              <Button variant="main" onClick={() => setShowUserPicker(true)}>
+                Select user
+              </Button>
+            </div>
             <InputContainer label="Quantity">
               <Field
                 as={Input}
@@ -75,17 +89,47 @@ export default function SalesAddPage() {
               />
               <ErrorMessage name="quantity" component={InvalidInputMessage} />
             </InputContainer>
+            <InputContainer label="Delivery date">
+              <Field
+                as={Input}
+                type="text"
+                name="deliveryDate"
+                placeholder={'Delivery date'}
+                enterKeyHint="next"
+                disabled={isLoading}
+              />
+              <ErrorMessage
+                name="deliveryDate"
+                component={InvalidInputMessage}
+              />
+            </InputContainer>
             <Button
               type="submit"
               variant="main"
               className={styles.submitButton}
-              disabled={isLoading}
+              disabled={isLoading || !areUserAndProductPicked()}
             >
               Create
             </Button>
           </div>
         </Form>
       </Formik>
+      {showProductPicker && (
+        <ProductSearch
+          onSelect={(product: Product) => {
+            setSelectedProduct(product)
+            setShowProductPicker(false)
+          }}
+        />
+      )}
+      {showUserPicker && (
+        <UserSearch
+          onSelect={(user: User) => {
+            setSelectedUser(user)
+            setShowUserPicker(false)
+          }}
+        />
+      )}
     </AddLayout>
   )
 }
