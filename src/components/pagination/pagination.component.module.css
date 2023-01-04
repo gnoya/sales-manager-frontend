@@ -14,16 +14,7 @@
 
 .prevPageButton,
 .nextPageButton {
-  display: grid;
-  place-content: center;
-  aspect-ratio: 2 / 1;
-  width: auto;
   height: 100%;
-  border: none;
-  outline: none;
-  border-radius: var(--border-radius);
-  background-color: var(--primary);
-  color: var(--background1);
 }
 
 .prevPageButton:disabled,

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import styles from './pagination.component.module.css'
+import Button from '../button/button.component'
 
 interface PaginationProps {
   currentPage: number
@@ -16,7 +17,8 @@ export default function Pagination({
 }: PaginationProps) {
   return (
     <div className={styles.container}>
-      <button
+      <Button
+        variant="main"
         className={styles.prevPageButton}
         onClick={onPrevPage}
         disabled={currentPage === 1}
@@ -25,11 +27,12 @@ export default function Pagination({
           icon={faArrowLeft}
           className={styles.prevPageButtonIcon}
         />
-      </button>
+      </Button>
       <span>
         {currentPage} / {totalPages}
       </span>
-      <button
+      <Button
+        variant="main"
         className={styles.nextPageButton}
         onClick={onNextPage}
         disabled={currentPage === totalPages}
@@ -38,7 +41,7 @@ export default function Pagination({
           icon={faArrowRight}
           className={styles.nextPageButtonIcon}
         />
-      </button>
+      </Button>
     </div>
   )
 }
