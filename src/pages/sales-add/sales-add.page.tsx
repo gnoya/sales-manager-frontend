@@ -22,8 +22,8 @@ export default function SalesAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
   const [showProductPicker, setShowProductPicker] = useState<boolean>(false)
   const [showUserPicker, setShowUserPicker] = useState<boolean>(false)
-  const [selectedProduct, setSelectedProduct] = useState<Product>()
-  const [selectedUser, setSelectedUser] = useState<User>()
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [selectedUser, setSelectedUser] = useState<User | null>(null)
 
   const navigate = useNavigate()
   const handleError = useErrorHandler()
@@ -38,6 +38,7 @@ export default function SalesAddPage() {
   }
 
   async function submit(values: typeof initialValues) {
+    console.log('submit')
     if (!areUserAndProductPicked()) return
     startLoading()
 
@@ -70,8 +71,12 @@ export default function SalesAddPage() {
               <div className={styles.pickRow}>
                 <span>{selectedProduct?.name || 'Select the product:'}</span>
                 <Button
+                  type="button"
                   variant={`${selectedProduct ? 'main' : 'secondary'}`}
-                  onClick={() => setShowProductPicker(true)}
+                  onClick={() => {
+                    setShowProductPicker(true)
+                    setSelectedProduct(null)
+                  }}
                 >
                   Select product
                 </Button>
@@ -79,8 +84,12 @@ export default function SalesAddPage() {
               <div className={styles.pickRow}>
                 <span>{selectedUser?.fullName || 'Select the user:'}</span>
                 <Button
+                  type="button"
                   variant={`${selectedUser ? 'main' : 'secondary'}`}
-                  onClick={() => setShowUserPicker(true)}
+                  onClick={() => {
+                    setShowUserPicker(true)
+                    setSelectedUser(null)
+                  }}
                 >
                   Select user
                 </Button>
