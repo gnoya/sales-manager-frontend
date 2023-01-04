@@ -56,6 +56,7 @@ export default function ProductSearch({ onSelect }: ProductSearchProps) {
             <ProductItem
               key={index}
               product={product}
+              grayBackground={index % 2 === 0}
               hideActionButtons={true}
               onClick={() => onSelect(product)}
             />

@@ -60,7 +60,12 @@ export default function UsersPage() {
       onRefresh={fetchUsers}
     >
       {users.map((user: User, index: number) => (
-        <UserItem key={index} user={user} onDelete={fetchUsers} />
+        <UserItem
+          key={index}
+          user={user}
+          grayBackground={index % 2 === 0}
+          onDelete={fetchUsers}
+        />
       ))}
     </ListLayout>
   )

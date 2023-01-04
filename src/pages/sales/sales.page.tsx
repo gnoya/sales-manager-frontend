@@ -64,6 +64,7 @@ export default function SalesPage() {
         <SaleItem
           key={index}
           sale={sale}
+          grayBackground={index % 2 === 0}
           onDelete={fetchSales}
           onClick={() => navigate(`${pathname}${sale.id}`)}
         />

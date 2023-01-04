@@ -4,9 +4,7 @@ import styles from './input.component.module.css'
 const Input = forwardRef<
   HTMLInputElement,
   InputHTMLAttributes<HTMLInputElement>
->((props, ref) => {
-  const { className, ...rest } = props
-
+>(({ className, ...rest }, ref) => {
   return (
     <input ref={ref} className={`${styles.input} ${className}`} {...rest} />
   )

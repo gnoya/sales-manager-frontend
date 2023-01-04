@@ -12,12 +12,12 @@ export const loadingContext = createContext(new LoadingContext())
 interface LoadingProviderProps {
   children?: ReactNode
 }
-export default function LoadingProvider(props: LoadingProviderProps) {
+export default function LoadingProvider({ children }: LoadingProviderProps) {
   const contextValue = useLoadingState()
 
   return (
     <loadingContext.Provider value={contextValue}>
-      {props.children}
+      {children}
     </loadingContext.Provider>
   )
 }

@@ -8,9 +8,11 @@ import { deleteProduct } from '../../services/product.service'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
 import styles from './product-item.component.module.css'
 import { useLocation, useNavigate } from 'react-router'
+import clsx from 'clsx'
 
 interface ProductItemProps {
   product: Product
+  grayBackground: boolean
   hideActionButtons?: boolean
   onClick?: () => void
   onDelete?: () => void
@@ -18,6 +20,7 @@ interface ProductItemProps {
 
 export default function ProductItem({
   product,
+  grayBackground,
   hideActionButtons = false,
   onClick,
   onDelete,
@@ -52,7 +55,13 @@ export default function ProductItem({
   }
 
   return (
-    <div className={styles.container} onClick={onClick}>
+    <div
+      className={clsx(
+        styles.container,
+        grayBackground && styles.grayBackground
+      )}
+      onClick={onClick}
+    >
       <p className={styles.firstColumn}>{product.name}</p>
       <p className={styles.secondColumn}>{product.quantity}</p>
 

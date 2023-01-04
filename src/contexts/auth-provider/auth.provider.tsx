@@ -14,12 +14,10 @@ export const authContext = createContext(new AuthContext())
 interface AuthProviderProps {
   children?: ReactNode
 }
-export default function AuthProvider(props: AuthProviderProps) {
+export default function AuthProvider({ children }: AuthProviderProps) {
   const contextValue = useAuthState()
 
   return (
-    <authContext.Provider value={contextValue}>
-      {props.children}
-    </authContext.Provider>
+    <authContext.Provider value={contextValue}>{children}</authContext.Provider>
   )
 }

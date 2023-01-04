@@ -56,6 +56,7 @@ export default function UserSearch({ onSelect }: UserSearchProps) {
             <UserItem
               key={index}
               user={user}
+              grayBackground={index % 2 === 0}
               hideActionButtons={true}
               onClick={() => onSelect(user)}
             />

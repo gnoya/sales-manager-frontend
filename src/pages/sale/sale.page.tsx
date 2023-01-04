@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import BoxContainer from '../../components/box-container/box-container.component'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
 import BackButtonLayout from '../../layouts/back-button/back-button.layout'
@@ -34,41 +35,43 @@ export default function SalePage() {
 
   return (
     <BackButtonLayout>
-      <div className={styles.container}>
-        <h3>Sale:</h3>
-        <p>
-          <span>Product:</span> {sale?.product?.name}
-        </p>
-        <p>
-          <span>Quantity:</span> {sale?.quantity}
-        </p>
+      <BoxContainer className={styles.boxContainer}>
+        <div className={styles.container}>
+          <h3>Sale:</h3>
+          <p>
+            <span>Product:</span> {sale?.product?.name}
+          </p>
+          <p>
+            <span>Quantity:</span> {sale?.quantity}
+          </p>
 
-        <p>
-          <span>Delivery date: </span>
-          {sale?.deliveryDate}
-        </p>
-        <h3>Client:</h3>
-        <p>
-          <span>Name: </span>
-          {sale?.user?.fullName}
-        </p>
-        <p>
-          <span>Email: </span>
-          {sale?.user?.identification}
-        </p>
-        <p>
-          <span>Phone: </span>
-          {sale?.user?.phone}
-        </p>
-        <p>
-          <span>Address: </span>
-          {sale?.user?.address}
-        </p>
-        <p>
-          <span>Email: </span>
-          {sale?.user?.email}
-        </p>
-      </div>
+          <p>
+            <span>Delivery date: </span>
+            {sale?.deliveryDate}
+          </p>
+          <h3>Client:</h3>
+          <p>
+            <span>Name: </span>
+            {sale?.user?.fullName}
+          </p>
+          <p>
+            <span>Email: </span>
+            {sale?.user?.identification}
+          </p>
+          <p>
+            <span>Phone: </span>
+            {sale?.user?.phone}
+          </p>
+          <p>
+            <span>Address: </span>
+            {sale?.user?.address}
+          </p>
+          <p>
+            <span>Email: </span>
+            {sale?.user?.email}
+          </p>
+        </div>
+      </BoxContainer>
     </BackButtonLayout>
   )
 }

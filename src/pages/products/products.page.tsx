@@ -60,7 +60,12 @@ export default function ProductsPage() {
       onRefresh={fetchProducts}
     >
       {products.map((product: Product, index: number) => (
-        <ProductItem key={index} product={product} onDelete={fetchProducts} />
+        <ProductItem
+          key={index}
+          product={product}
+          grayBackground={index % 2 === 0}
+          onDelete={fetchProducts}
+        />
       ))}
     </ListLayout>
   )

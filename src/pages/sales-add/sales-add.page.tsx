@@ -16,6 +16,7 @@ import { Product } from '../../models/product.model'
 import { useState } from 'react'
 import UserSearch from '../../components/user-search/user-search.component'
 import { User } from '../../models/user.model'
+import BoxContainer from '../../components/box-container/box-container.component'
 
 export default function SalesAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
@@ -62,56 +63,61 @@ export default function SalesAddPage() {
         validationSchema={saleFormValidation}
         onSubmit={submit}
       >
-        <Form className={styles.form}>
-          <Title>Add a new sale</Title>
-          <div className={styles.body}>
-            <div className={styles.pickRow}>
-              <span>{selectedProduct?.name || 'Select the product:'}</span>
-              <Button variant="main" onClick={() => setShowProductPicker(true)}>
-                Select product
+        <BoxContainer className={styles.boxContainer}>
+          <Form className={styles.form}>
+            <Title>Add a new sale</Title>
+            <div className={styles.body}>
+              <div className={styles.pickRow}>
+                <span>{selectedProduct?.name || 'Select the product:'}</span>
+                <Button
+                  variant="main"
+                  onClick={() => setShowProductPicker(true)}
+                >
+                  Select product
+                </Button>
+              </div>
+              <div className={styles.pickRow}>
+                <span>{selectedUser?.fullName || 'Select the user:'}</span>
+                <Button variant="main" onClick={() => setShowUserPicker(true)}>
+                  Select user
+                </Button>
+              </div>
+              <InputContainer label="Quantity">
+                <Field
+                  as={Input}
+                  type="number"
+                  name="quantity"
+                  placeholder={'Quantity'}
+                  enterKeyHint="next"
+                  disabled={isLoading}
+                />
+                <ErrorMessage name="quantity" component={InvalidInputMessage} />
+              </InputContainer>
+              <InputContainer label="Delivery date">
+                <Field
+                  as={Input}
+                  type="text"
+                  name="deliveryDate"
+                  placeholder={'Delivery date'}
+                  enterKeyHint="next"
+                  disabled={isLoading}
+                />
+                <ErrorMessage
+                  name="deliveryDate"
+                  component={InvalidInputMessage}
+                />
+              </InputContainer>
+              <Button
+                type="submit"
+                variant="main"
+                className={styles.submitButton}
+                disabled={isLoading || !areUserAndProductPicked()}
+              >
+                Create
               </Button>
             </div>
-            <div className={styles.pickRow}>
-              <span>{selectedUser?.fullName || 'Select the user:'}</span>
-              <Button variant="main" onClick={() => setShowUserPicker(true)}>
-                Select user
-              </Button>
-            </div>
-            <InputContainer label="Quantity">
-              <Field
-                as={Input}
-                type="number"
-                name="quantity"
-                placeholder={'Quantity'}
-                enterKeyHint="next"
-                disabled={isLoading}
-              />
-              <ErrorMessage name="quantity" component={InvalidInputMessage} />
-            </InputContainer>
-            <InputContainer label="Delivery date">
-              <Field
-                as={Input}
-                type="text"
-                name="deliveryDate"
-                placeholder={'Delivery date'}
-                enterKeyHint="next"
-                disabled={isLoading}
-              />
-              <ErrorMessage
-                name="deliveryDate"
-                component={InvalidInputMessage}
-              />
-            </InputContainer>
-            <Button
-              type="submit"
-              variant="main"
-              className={styles.submitButton}
-              disabled={isLoading || !areUserAndProductPicked()}
-            >
-              Create
-            </Button>
-          </div>
-        </Form>
+          </Form>
+        </BoxContainer>
       </Formik>
       {showProductPicker && (
         <ProductSearch

@@ -5,9 +5,12 @@ import styles from './button-link.component.module.css'
 interface ButtonLinkProps extends LinkProps {
   variant: ButtonVariant
 }
-export default function ButtonLink(props: ButtonLinkProps) {
-  const { className, children, variant, ...rest } = props
-
+export default function ButtonLink({
+  className,
+  children,
+  variant,
+  ...rest
+}: ButtonLinkProps) {
   return (
     <Link
       className={`${styles.buttonLink} ${styleMap[variant]} ${className}`}

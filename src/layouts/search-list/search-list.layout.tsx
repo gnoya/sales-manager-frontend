@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './search-list.layout.module.css'
+import BoxContainer from '../../components/box-container/box-container.component'
 
 interface SearchListLayoutProps {
   title: string
@@ -17,13 +18,15 @@ export default function SearchListLayout({
   children,
 }: SearchListLayoutProps) {
   return (
-    <div className={styles.container}>
-      <Title>{title}</Title>
-      <div className={styles.rowContainer}>
-        {searchBar}
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
+    <BoxContainer>
+      <div className={styles.container}>
+        <Title>{title}</Title>
+        <div className={styles.rowContainer}>
+          {searchBar}
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </div>
+        <div className={styles.listContainer}>{children}</div>
       </div>
-      <div className={styles.listContainer}>{children}</div>
-    </div>
+    </BoxContainer>
   )
 }

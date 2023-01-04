@@ -13,6 +13,7 @@ import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler
 
 import { createProduct } from '../../services/product.service'
 import { Product, productFormValidation } from '../../models/product.model'
+import BoxContainer from '../../components/box-container/box-container.component'
 
 export default function ProductsAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
@@ -44,41 +45,43 @@ export default function ProductsAddPage() {
         validationSchema={productFormValidation}
         onSubmit={submit}
       >
-        <Form className={styles.form}>
-          <Title>Add a new product</Title>
-          <div className={styles.body}>
-            <InputContainer label="Name">
-              <Field
-                as={Input}
-                type="text"
-                name="name"
-                placeholder={'Name'}
-                enterKeyHint="next"
+        <BoxContainer className={styles.boxContainer}>
+          <Form className={styles.form}>
+            <Title>Add a new product</Title>
+            <div className={styles.body}>
+              <InputContainer label="Name">
+                <Field
+                  as={Input}
+                  type="text"
+                  name="name"
+                  placeholder={'Name'}
+                  enterKeyHint="next"
+                  disabled={isLoading}
+                />
+                <ErrorMessage name="name" component={InvalidInputMessage} />
+              </InputContainer>
+              <InputContainer label="Quantity">
+                <Field
+                  as={Input}
+                  type="number"
+                  name="quantity"
+                  placeholder={'Quantity'}
+                  enterKeyHint="next"
+                  disabled={isLoading}
+                />
+                <ErrorMessage name="quantity" component={InvalidInputMessage} />
+              </InputContainer>
+              <Button
+                type="submit"
+                variant="main"
+                className={styles.submitButton}
                 disabled={isLoading}
-              />
-              <ErrorMessage name="name" component={InvalidInputMessage} />
-            </InputContainer>
-            <InputContainer label="Quantity">
-              <Field
-                as={Input}
-                type="number"
-                name="quantity"
-                placeholder={'Quantity'}
-                enterKeyHint="next"
-                disabled={isLoading}
-              />
-              <ErrorMessage name="quantity" component={InvalidInputMessage} />
-            </InputContainer>
-            <Button
-              type="submit"
-              variant="main"
-              className={styles.submitButton}
-              disabled={isLoading}
-            >
-              Create
-            </Button>
-          </div>
-        </Form>
+              >
+                Create
+              </Button>
+            </div>
+          </Form>
+        </BoxContainer>
       </Formik>
     </BackButtonLayout>
   )

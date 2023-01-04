@@ -6,9 +6,11 @@ import { useModal } from '../../hooks/use-modal/use-modal.hook'
 import { deleteUser } from '../../services/user.service'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
 import styles from './user-item.component.module.css'
+import clsx from 'clsx'
 
 interface UserItemProps {
   user: User
+  grayBackground: boolean
   hideActionButtons?: boolean
   onClick?: () => void
   onDelete?: () => void
@@ -16,6 +18,7 @@ interface UserItemProps {
 
 export default function UserItem({
   user,
+  grayBackground,
   hideActionButtons = false,
   onClick,
   onDelete,
@@ -45,7 +48,13 @@ export default function UserItem({
   }
 
   return (
-    <div className={styles.container} onClick={onClick}>
+    <div
+      className={clsx(
+        styles.container,
+        grayBackground && styles.grayBackground
+      )}
+      onClick={onClick}
+    >
       <p className={styles.firstColumn}>{user.fullName}</p>
       <p className={styles.secondColumn}>{user.phone}</p>
       {!hideActionButtons && (

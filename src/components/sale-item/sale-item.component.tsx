@@ -5,15 +5,22 @@ import toast from 'react-hot-toast'
 import { useModal } from '../../hooks/use-modal/use-modal.hook'
 import { deleteSale } from '../../services/sale.service'
 import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler.hook'
+import { clsx } from 'clsx'
 import styles from './sale-item.component.module.css'
 
 interface SaleItemProps {
   sale: Sale
+  grayBackground: boolean
   onClick?: () => void
   onDelete: () => void
 }
 
-export default function SaleItem({ sale, onClick, onDelete }: SaleItemProps) {
+export default function SaleItem({
+  grayBackground,
+  sale,
+  onClick,
+  onDelete,
+}: SaleItemProps) {
   const modal = useModal()
   const handleError = useErrorHandler()
 
@@ -38,7 +45,13 @@ export default function SaleItem({ sale, onClick, onDelete }: SaleItemProps) {
   }
 
   return (
-    <div className={styles.container} onClick={onClick}>
+    <div
+      className={clsx(
+        styles.container,
+        grayBackground && styles.grayBackground
+      )}
+      onClick={onClick}
+    >
       <p className={styles.firstColumn}>{sale.product?.name || '-'}</p>
       <p className={styles.secondColumn}>{sale.quantity}</p>
       <p className={styles.thirdColumn}>{sale.deliveryDate}</p>

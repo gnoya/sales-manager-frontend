@@ -6,14 +6,18 @@
   align-items: center;
   gap: 0;
   padding: 10px 30px;
-  background-color: var(--background2);
+  background-color: var(--background1);
   border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.grayBackground {
+  background-color: var(--gray);
 }
 
 .deleteIcon {
   height: 100%;
   color: var(--tertiary);
-  cursor: pointer;
 }
 
 .firstColumn {

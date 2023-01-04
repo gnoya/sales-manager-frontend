@@ -19,9 +19,12 @@ export const styleMap: Record<ButtonVariant, string> = {
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: ButtonVariant
 }
-export default function Button(props: ButtonProps) {
-  const { className, children, variant, ...rest } = props
-
+export default function Button({
+  className,
+  children,
+  variant,
+  ...rest
+}: ButtonProps) {
   return (
     <button
       className={`${styles.button} ${styleMap[variant]} ${className}`}
