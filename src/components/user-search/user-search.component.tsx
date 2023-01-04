@@ -46,7 +46,7 @@ export default function UserSearch({ onSelect }: UserSearchProps) {
               <InputContainer>
                 <Input
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Search by name"
+                  label="Search by name"
                 />
               </InputContainer>
             </div>

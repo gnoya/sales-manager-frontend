@@ -3,7 +3,3 @@
   flex-flow: column nowrap;
   gap: 5px 0;
 }
-
-.container span {
-  font-size: 0.9rem;
-}

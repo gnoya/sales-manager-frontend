@@ -1,6 +1,5 @@
 import Title from '../../components/title/title.component'
 import { usePageTitle } from '../../hooks/use-page-title/use-page-title.hook'
-import styles from './login.page.module.css'
 import { ErrorMessage, Field, Formik, Form } from 'formik'
 import InputContainer from '../../components/input-container/input-container.component'
 import Input from '../../components/input/input.component'
@@ -8,6 +7,8 @@ import InvalidInputMessage from '../../components/invalid-input-message/invalid-
 import Button from '../../components/button/button.component'
 import { useAuthForm } from '../../hooks/use-auth-form/use-auth-form.hook'
 import BoxContainer from '../../components/box-container/box-container.component'
+
+import styles from './login.page.module.css'
 
 export default function LoginPage() {
   const { initialValues, submit, validation, isLoading } = useAuthForm()
@@ -29,9 +30,9 @@ export default function LoginPage() {
                   as={Input}
                   type="email"
                   name="email"
-                  placeholder={'Email'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label={'Email'}
                 />
                 <ErrorMessage name="email" component={InvalidInputMessage} />
               </InputContainer>
@@ -40,9 +41,9 @@ export default function LoginPage() {
                   as={Input}
                   type="password"
                   name="password"
-                  placeholder={'Password'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Password"
                 />
                 <ErrorMessage name="password" component={InvalidInputMessage} />
               </InputContainer>

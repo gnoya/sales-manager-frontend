@@ -13,7 +13,6 @@
   --primary: #1c1c22;
   --secondary: #2dace3;
   --tertiary: #2dace3;
-
   --secondary-darker: #259acc;
   --gray: #e7e7e7;
 
@@ -25,13 +24,13 @@
   --box-border: 2px solid var(--secondary);
   --border-radius: 10px;
 
-  /* Z-indexes */
-  --z-neg: -1;
-  --z-0: 0;
-  --z-1: 1;
-  --z-10: 10;
-
+  /* Scroll bar*/
   --scrollbar-width: 8px;
+
+  /* Input Colors */
+  --input-border-color-highlight: var(--secondary);
+  --input-text-color: #80868b;
+  --input-border-color: #dadce0;
 
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;

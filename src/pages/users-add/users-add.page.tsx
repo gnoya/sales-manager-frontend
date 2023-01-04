@@ -56,56 +56,56 @@ export default function UsersAddPage() {
           <Form className={styles.form}>
             <Title>Add a new user</Title>
             <div className={styles.body}>
-              <InputContainer label="Name">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="text"
                   name="fullName"
-                  placeholder={'Name'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Name"
                 />
                 <ErrorMessage name="fullName" component={InvalidInputMessage} />
               </InputContainer>
-              <InputContainer label="Identification">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="text"
                   name="identification"
-                  placeholder={'Identification'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Identification"
                 />
                 <ErrorMessage
                   name="identification"
                   component={InvalidInputMessage}
                 />
               </InputContainer>
-              <InputContainer label="Phone">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="text"
                   name="phone"
-                  placeholder={'Phone'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Phone"
                 />
                 <ErrorMessage name="phone" component={InvalidInputMessage} />
               </InputContainer>
-              <InputContainer label="Address">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="text"
                   name="address"
-                  placeholder={'Address'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Address"
                 />
                 <ErrorMessage name="address" component={InvalidInputMessage} />
               </InputContainer>
               <Button
                 type="submit"
-                variant="main"
+                variant="secondary"
                 className={styles.submitButton}
                 disabled={isLoading}
               >

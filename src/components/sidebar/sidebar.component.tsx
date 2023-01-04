@@ -17,7 +17,7 @@ import { useAuth } from '../../hooks/use-auth/use-auth.hook'
 
 export default function Sidebar() {
   const logout = useLogout()
-  const modal = useModal()
+  const modal = useModal({ showCancelButton: false })
   const { user } = useAuth()
 
   function pageNotAvailable() {

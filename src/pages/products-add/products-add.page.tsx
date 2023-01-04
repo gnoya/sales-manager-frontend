@@ -49,31 +49,31 @@ export default function ProductsAddPage() {
           <Form className={styles.form}>
             <Title>Add a new product</Title>
             <div className={styles.body}>
-              <InputContainer label="Name">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="text"
                   name="name"
-                  placeholder={'Name'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Name"
                 />
                 <ErrorMessage name="name" component={InvalidInputMessage} />
               </InputContainer>
-              <InputContainer label="Quantity">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="number"
                   name="quantity"
-                  placeholder={'Quantity'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Quantity"
                 />
                 <ErrorMessage name="quantity" component={InvalidInputMessage} />
               </InputContainer>
               <Button
                 type="submit"
-                variant="main"
+                variant="secondary"
                 className={styles.submitButton}
                 disabled={isLoading}
               >

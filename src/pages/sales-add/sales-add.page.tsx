@@ -70,7 +70,7 @@ export default function SalesAddPage() {
               <div className={styles.pickRow}>
                 <span>{selectedProduct?.name || 'Select the product:'}</span>
                 <Button
-                  variant="main"
+                  variant={`${selectedProduct ? 'main' : 'secondary'}`}
                   onClick={() => setShowProductPicker(true)}
                 >
                   Select product
@@ -78,29 +78,32 @@ export default function SalesAddPage() {
               </div>
               <div className={styles.pickRow}>
                 <span>{selectedUser?.fullName || 'Select the user:'}</span>
-                <Button variant="main" onClick={() => setShowUserPicker(true)}>
+                <Button
+                  variant={`${selectedUser ? 'main' : 'secondary'}`}
+                  onClick={() => setShowUserPicker(true)}
+                >
                   Select user
                 </Button>
               </div>
-              <InputContainer label="Quantity">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="number"
                   name="quantity"
-                  placeholder={'Quantity'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Quantity"
                 />
                 <ErrorMessage name="quantity" component={InvalidInputMessage} />
               </InputContainer>
-              <InputContainer label="Delivery date">
+              <InputContainer>
                 <Field
                   as={Input}
                   type="text"
                   name="deliveryDate"
-                  placeholder={'Delivery date'}
                   enterKeyHint="next"
                   disabled={isLoading}
+                  label="Delivery date"
                 />
                 <ErrorMessage
                   name="deliveryDate"
@@ -109,7 +112,7 @@ export default function SalesAddPage() {
               </InputContainer>
               <Button
                 type="submit"
-                variant="main"
+                variant="secondary"
                 className={styles.submitButton}
                 disabled={isLoading || !areUserAndProductPicked()}
               >

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { ButtonHTMLAttributes } from 'react'
 import styles from './button.component.module.css'
 
@@ -27,7 +28,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`${styles.button} ${styleMap[variant]} ${className}`}
+      className={clsx(styles.button, styleMap[variant], className)}
       {...rest}
     >
       {children}

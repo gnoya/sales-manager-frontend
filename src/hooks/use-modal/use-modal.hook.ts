@@ -2,8 +2,15 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import styles from './use-modal.hook.module.css'
 
-export function useModal(params = { danger: false }) {
-  const { danger } = params
+interface UseModalParams {
+  danger?: boolean
+  showCancelButton?: boolean
+}
+
+export function useModal({
+  danger = false,
+  showCancelButton = false,
+}: UseModalParams) {
   const modal = withReactContent(
     Swal.mixin({
       reverseButtons: true,
@@ -20,7 +27,7 @@ export function useModal(params = { danger: false }) {
         }`,
         cancelButton: `${styles.modalButton} ${styles.modalCancelButton}`,
       },
-      showCancelButton: true,
+      showCancelButton: showCancelButton,
       confirmButtonText: 'Ok',
     })
   )

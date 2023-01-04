@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import styles from './loading-screen.component.module.css'
 
 interface LoadingScreenProps {
@@ -10,9 +11,11 @@ export default function LoadingScreen({
 }: LoadingScreenProps) {
   return (
     <div
-      className={`${styles.container} ${
-        fullViewport ? styles.fullViewport : ''
-      } ${transparentBG ? styles.transparentBG : ''}`}
+      className={clsx(
+        styles.container,
+        fullViewport && styles.fullViewport,
+        transparentBG && styles.transparentBG
+      )}
     >
       <div className={styles.spinner}></div>
     </div>
