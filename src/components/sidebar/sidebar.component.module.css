@@ -49,8 +49,7 @@
   margin: 0 auto;
   aspect-ratio: 1 / 1;
   background-color: white;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  animation: logoContainerAnimation 8s ease-in-out infinite 1s;
+  animation: logoContainerAnimation 8s ease-in-out infinite;
 }
 
 .buttonText {
