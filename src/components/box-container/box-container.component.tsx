@@ -7,6 +7,10 @@ export interface BoxContainerProps {
   children: ReactNode
 }
 
+/*
+  This components wrap its children with a container that has box shadow
+  and fixed padding.
+*/
 export default function BoxContainer({
   children,
   className,

@@ -5,6 +5,14 @@ interface LoadingScreenProps {
   fullViewport?: boolean
   transparentBG?: boolean
 }
+
+/*
+  This is a loading screen component
+
+  Params:
+  fullViewport will have 100% of the screen
+  transparentBG will remove the css background so it can become transparent
+*/
 export default function LoadingScreen({
   fullViewport = false,
   transparentBG = true,

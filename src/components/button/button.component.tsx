@@ -20,6 +20,10 @@ export const styleMap: Record<ButtonVariant, string> = {
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: ButtonVariant
 }
+
+/*
+  The button component that contains a set css styles controlled by "variant" prop
+*/
 export default function Button({
   className,
   children,

@@ -3,6 +3,11 @@ import { useCallback } from 'react'
 import toast from 'react-hot-toast'
 import { signOut } from '../../services/auth.service'
 
+/*
+  This hook is used to handle errors in the website.
+  It can handle the HTTP errors aswell and logs them
+  and also report them in a toast.
+*/
 export function useErrorHandler() {
   function signOutWhenUnauthorized() {
     signOut()

@@ -9,6 +9,16 @@ interface PaginationProps {
   onPrevPage: () => void
   onNextPage: () => void
 }
+
+/*
+  This is a component to control pagination
+
+  Params:
+  currentPage: what is the page we are currently are
+  totalPages: total number of pages
+  onPrevPage: callback function to be called when the previous page button is clicked
+  onNextPage: callback function to be called when the next page button is clicked
+*/
 export default function Pagination({
   currentPage,
   totalPages,

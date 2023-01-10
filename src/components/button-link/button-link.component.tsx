@@ -6,6 +6,11 @@ import styles from './button-link.component.module.css'
 interface ButtonLinkProps extends LinkProps {
   variant: ButtonVariant
 }
+
+/*
+  The button component that acts as a Link (router) 
+  that contains a set css styles controlled by "variant" prop
+*/
 export default function ButtonLink({
   className,
   children,

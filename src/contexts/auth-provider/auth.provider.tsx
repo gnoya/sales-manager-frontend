@@ -14,6 +14,10 @@ export const authContext = createContext(new AuthContext())
 interface AuthProviderProps {
   children?: ReactNode
 }
+
+/*
+  Auth provider and auth context are used to store the signedIn user
+*/
 export default function AuthProvider({ children }: AuthProviderProps) {
   const contextValue = useAuthState()
 

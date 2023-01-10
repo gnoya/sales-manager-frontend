@@ -4,6 +4,13 @@ interface PaginationProps {
   initialLimit: number
 }
 
+/*
+  This hooks is used to contorl the pagination.
+
+  Params:
+  initialLimit: Default limit used in the pagination
+*/
+
 export function usePagination({ initialLimit }: PaginationProps) {
   const [page, setPage] = useState<number>(1)
   const [limit, setLimit] = useState<number>(initialLimit)

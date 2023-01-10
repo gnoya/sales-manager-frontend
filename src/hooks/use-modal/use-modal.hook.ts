@@ -7,6 +7,13 @@ interface UseModalParams {
   showCancelButton?: boolean
 }
 
+/*
+  This hook is used to pop modals in any page
+
+  Params:
+  danger: used to display a warning icon in the modal
+  showCancelButton: used to display a cancel button in the modal
+*/
 export function useModal({
   danger = false,
   showCancelButton = false,

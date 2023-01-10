@@ -8,6 +8,13 @@ interface CustomDatePickerProps {
   onDateChange: (date: Date) => void
 }
 
+/*
+  Custom date picker using 'react-datepicker' library.
+
+  Params:
+  onDateChange: callback function to be called whenever the user picks a new date
+*/
+
 export default function CustomDatePicker({
   onDateChange,
 }: CustomDatePickerProps) {

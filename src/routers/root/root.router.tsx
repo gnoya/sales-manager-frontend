@@ -7,6 +7,10 @@ const DashboardRouter = lazy(() => import('../dashboard/dashboard.router'))
 const LoginPage = lazy(() => import('../../pages/login/login.page'))
 const NotFoundPage = lazy(() => import('../../pages/not-found/not-found.page'))
 
+/*
+  Root router is used to redirect the routes from '/'.
+  Every other subroute (example: /subroute/*) should be lazy loaded for performance
+*/
 export default function RootRouter() {
   return (
     <Routes>

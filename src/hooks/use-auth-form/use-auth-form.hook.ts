@@ -4,6 +4,9 @@ import { useLoading } from '../use-loading/use-loading.hook'
 import { signIn } from '../../services/auth.service'
 import { useAuth } from '../use-auth/use-auth.hook'
 
+/*
+  Hook used for the login form
+*/
 export function useAuthForm() {
   const { isLoading, startLoading, stopLoading } = useLoading()
   const { setUser, setSignedIn } = useAuth()

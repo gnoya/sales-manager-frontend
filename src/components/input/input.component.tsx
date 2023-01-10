@@ -6,6 +6,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
 }
 
+/*
+  Text and number input component with animations on focus
+  
+  Params:
+  label: the text that will be displayed on top of the input
+*/
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, className, ...rest }, ref) => {
     return (

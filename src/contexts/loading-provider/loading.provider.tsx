@@ -12,6 +12,10 @@ export const loadingContext = createContext(new LoadingContext())
 interface LoadingProviderProps {
   children?: ReactNode
 }
+
+/*
+  Loading Provider is used to store the loading state of the application
+*/
 export default function LoadingProvider({ children }: LoadingProviderProps) {
   const contextValue = useLoadingState()
 
