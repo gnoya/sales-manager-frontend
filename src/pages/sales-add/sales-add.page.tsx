@@ -17,37 +17,56 @@ import { useState } from 'react'
 import UserSearch from '../../components/user-search/user-search.component'
 import { User } from '../../models/user.model'
 import BoxContainer from '../../components/box-container/box-container.component'
+import CustomDatePicker from '../../components/date-picker/date-picker.component'
 
 export default function SalesAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
   const [showProductPicker, setShowProductPicker] = useState<boolean>(false)
   const [showUserPicker, setShowUserPicker] = useState<boolean>(false)
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [selectedUser, setSelectedUser] = useState<User | null>(null)
+  const [deliveryDate, setDeliveryDate] = useState<Date | null>(null)
 
   const navigate = useNavigate()
   const handleError = useErrorHandler()
 
-  const initialValues: Omit<Sale, 'id' | 'productId' | 'userId'> = {
+  const initialValues: Omit<
+    Sale,
+    'id' | 'productId' | 'userId' | 'deliveryDate'
+  > = {
     quantity: 1,
-    deliveryDate: new Date().toLocaleString(),
   }
 
-  function areUserAndProductPicked() {
-    return selectedProduct !== undefined && selectedUser !== undefined
+  function isProductPicked(product: unknown): product is Product {
+    return product !== null
+  }
+
+  function isUserPicked(user: unknown): user is User {
+    return user !== null
+  }
+
+  function isDatePicked(date: unknown): date is Date {
+    return date !== null
   }
 
   async function submit(values: typeof initialValues) {
     console.log('submit')
-    if (!areUserAndProductPicked()) return
+    if (
+      !isProductPicked(selectedProduct) ||
+      !isUserPicked(selectedUser) ||
+      !isDatePicked(deliveryDate)
+    )
+      return
+
     startLoading()
 
     try {
       await createSale(
-        selectedProduct?.id || '',
-        selectedUser?.id || '',
+        selectedProduct.id,
+        selectedUser.id,
         values.quantity,
-        values.deliveryDate
+        deliveryDate.toISOString()
       )
       navigate(-1)
     } catch (err) {
@@ -105,25 +124,19 @@ export default function SalesAddPage() {
                 />
                 <ErrorMessage name="quantity" component={InvalidInputMessage} />
               </InputContainer>
-              <InputContainer>
-                <Field
-                  as={Input}
-                  type="text"
-                  name="deliveryDate"
-                  enterKeyHint="next"
-                  disabled={isLoading}
-                  label="Delivery date"
-                />
-                <ErrorMessage
-                  name="deliveryDate"
-                  component={InvalidInputMessage}
-                />
-              </InputContainer>
+              <CustomDatePicker
+                onDateChange={(date: Date) => setDeliveryDate(date)}
+              />
               <Button
                 type="submit"
                 variant="secondary"
                 className={styles.submitButton}
-                disabled={isLoading || !areUserAndProductPicked()}
+                disabled={
+                  isLoading ||
+                  !isProductPicked(selectedProduct) ||
+                  !isUserPicked(selectedUser) ||
+                  !isDatePicked(deliveryDate)
+                }
               >
                 Create
               </Button>
