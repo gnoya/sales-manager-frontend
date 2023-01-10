@@ -23,7 +23,7 @@ export default function UserItem({
   onClick,
   onDelete,
 }: UserItemProps) {
-  const modal = useModal({})
+  const modal = useModal({ showCancelButton: true })
   const handleError = useErrorHandler()
 
   async function deleteItem(e: any) {

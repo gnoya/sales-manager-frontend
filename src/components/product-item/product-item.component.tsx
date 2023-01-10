@@ -25,7 +25,7 @@ export default function ProductItem({
   onClick,
   onDelete,
 }: ProductItemProps) {
-  const modal = useModal({})
+  const modal = useModal({ showCancelButton: true })
   const handleError = useErrorHandler()
   const navigate = useNavigate()
   const { pathname } = useLocation()

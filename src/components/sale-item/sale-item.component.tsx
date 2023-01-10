@@ -21,7 +21,7 @@ export default function SaleItem({
   onClick,
   onDelete,
 }: SaleItemProps) {
-  const modal = useModal({})
+  const modal = useModal({ showCancelButton: true })
   const handleError = useErrorHandler()
 
   async function deleteItem(e: any) {
