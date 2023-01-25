@@ -3,6 +3,7 @@ import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler
 import { useLoading } from '../use-loading/use-loading.hook'
 import { signIn } from '../../services/auth.service'
 import { useAuth } from '../use-auth/use-auth.hook'
+import { toast } from 'react-hot-toast'
 
 /*
   Hook used for the login form
@@ -28,6 +29,7 @@ export function useAuthForm() {
       const result = await signIn(values)
       setUser(result)
       setSignedIn(true)
+      toast.success('Signed in succesfully')
     } catch (error) {
       handleError(error)
     }

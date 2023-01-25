@@ -18,6 +18,7 @@ import UserSearch from '../../components/user-search/user-search.component'
 import { User } from '../../models/user.model'
 import BoxContainer from '../../components/box-container/box-container.component'
 import CustomDatePicker from '../../components/date-picker/date-picker.component'
+import { toast } from 'react-hot-toast'
 
 export default function SalesAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
@@ -68,6 +69,7 @@ export default function SalesAddPage() {
         values.quantity,
         deliveryDate.toISOString()
       )
+      toast.success('Sale added succesfully')
       navigate(-1)
     } catch (err) {
       handleError(err)

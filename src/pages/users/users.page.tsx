@@ -25,7 +25,7 @@ export default function UsersPage() {
     try {
       const { users, pagination } = await getUsers(page, limit)
       setUsers(users)
-      setTotalPages(pagination.last)
+      setTotalPages(pagination.pages)
     } catch (err) {
       handleError(err)
     }

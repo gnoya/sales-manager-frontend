@@ -131,7 +131,6 @@ export const mockSale: Sale = {
 }
 
 export const mockPagination: Pagination = {
-  last: 4,
-  prev: 1,
-  next: 3,
+  pages: 4,
+  count: 1,
 }

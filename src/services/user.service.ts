@@ -1,4 +1,3 @@
-import { mockPagination, mockUser, mockUsers } from '../mock-data/mock-data'
 import { Pagination } from '../models/pagination.model'
 import { User, transformUser, transformUserArray } from '../models/user.model'
 import { privateHTTP } from './http.service'
@@ -9,9 +8,7 @@ export async function createUser(
   phone: string,
   address: string
 ): Promise<void> {
-  return
-
-  await privateHTTP.post('/user.service/users', {
+  await privateHTTP.post('/users', {
     fullName,
     identification,
     phone,
@@ -20,35 +17,34 @@ export async function createUser(
 }
 
 export async function deleteUser(id: string): Promise<void> {
-  console.log(`Deleting user ${id}`)
-  return
-
-  await privateHTTP.delete(`/user.service/users/${id}`)
+  await privateHTTP.delete(`/users/${id}`)
 }
 
 export async function getUsers(
   page: number,
   limit: number
 ): Promise<{ users: User[]; pagination: Pagination }> {
-  console.log(`Getting page ${page} and limit ${limit}`)
-  // const response = await privateHTTP.get('/user.service/users')
-  const response = { data: mockUsers }
-  const pagination = mockPagination
+  const response = await privateHTTP.get('/users', { params: { page, limit } })
+  const pagination: Pagination = response.data.links
 
-  return { users: transformUserArray(response.data), pagination }
+  return { users: transformUserArray(response.data.data), pagination }
+}
+
+export async function batchUsers(ids: string[]): Promise<User[]> {
+  const response = await privateHTTP.get('/users/batch', { params: { ids } })
+
+  return transformUserArray(response.data.data)
 }
 
 export async function getUser(id: string): Promise<User> {
-  // const response = await privateHTTP.get(`/user.service/users/${id}`)
-  const response = { data: mockUser }
+  const response = await privateHTTP.get(`/users/${id}`)
 
-  return transformUser(response)
+  return transformUser(response.data.data)
 }
 
 export async function getUsersByName(fullName: string): Promise<User[]> {
-  console.log(`Getting by name ${fullName}`)
-  // const response = await privateHTTP.get('/user.service/users')
-  const response = { data: mockUsers }
-
-  return transformUserArray(response.data)
+  const response = await privateHTTP.get('/users', {
+    params: { page: 1, limit: 100, fullName },
+  })
+  return transformUserArray(response.data.data)
 }

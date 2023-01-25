@@ -14,6 +14,7 @@ import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler
 import { createUser } from '../../services/user.service'
 import { User, userFormValidation } from '../../models/user.model'
 import BoxContainer from '../../components/box-container/box-container.component'
+import { toast } from 'react-hot-toast'
 
 export default function UsersAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
@@ -37,6 +38,7 @@ export default function UsersAddPage() {
         values.phone,
         values.address
       )
+      toast.success('User added succesfully')
       navigate(-1)
     } catch (err) {
       handleError(err)

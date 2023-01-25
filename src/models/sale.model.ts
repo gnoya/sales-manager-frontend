@@ -27,7 +27,7 @@ export function transformSale(data: any): Sale {
     productId,
     userId,
     quantity,
-    deliveryDate,
+    deliveryDate: new Date(deliveryDate).toLocaleString(),
     user: transformedUser,
     product: transformedProduct,
   }

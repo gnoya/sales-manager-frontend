@@ -14,6 +14,7 @@ import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler
 import { createProduct } from '../../services/product.service'
 import { Product, productFormValidation } from '../../models/product.model'
 import BoxContainer from '../../components/box-container/box-container.component'
+import { toast } from 'react-hot-toast'
 
 export default function ProductsAddPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
@@ -23,13 +24,21 @@ export default function ProductsAddPage() {
   const initialValues: Omit<Product, 'id'> = {
     name: '',
     quantity: 0,
+    price: 0,
+    profit: 0,
   }
 
   async function submit(values: typeof initialValues) {
     startLoading()
 
     try {
-      await createProduct(values.name, values.quantity)
+      await createProduct(
+        values.name,
+        values.quantity,
+        values.price,
+        values.profit
+      )
+      toast.success('Product added succesfully')
       navigate(-1)
     } catch (err) {
       handleError(err)
@@ -70,6 +79,28 @@ export default function ProductsAddPage() {
                   label="Quantity"
                 />
                 <ErrorMessage name="quantity" component={InvalidInputMessage} />
+              </InputContainer>
+              <InputContainer>
+                <Field
+                  as={Input}
+                  type="number"
+                  name="price"
+                  enterKeyHint="next"
+                  disabled={isLoading}
+                  label="Price"
+                />
+                <ErrorMessage name="price" component={InvalidInputMessage} />
+              </InputContainer>
+              <InputContainer>
+                <Field
+                  as={Input}
+                  type="number"
+                  name="profit"
+                  enterKeyHint="next"
+                  disabled={isLoading}
+                  label="Profit"
+                />
+                <ErrorMessage name="profit" component={InvalidInputMessage} />
               </InputContainer>
               <Button
                 type="submit"

@@ -15,6 +15,7 @@ import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler
 import { getProduct, updateProduct } from '../../services/product.service'
 import { Product, productFormValidation } from '../../models/product.model'
 import BoxContainer from '../../components/box-container/box-container.component'
+import { toast } from 'react-hot-toast'
 
 export default function ProductsEditPage() {
   const { isLoading, startLoading, stopLoading } = useLoading()
@@ -35,6 +36,7 @@ export default function ProductsEditPage() {
 
     try {
       await updateProduct(product.id, values.name, values.quantity)
+      toast.success('Product edited succesfully')
       navigate(-1)
     } catch (err) {
       handleError(err)

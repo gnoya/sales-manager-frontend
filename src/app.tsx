@@ -22,7 +22,7 @@ function App() {
             toastOptions={{
               style: {
                 padding: '10px 20px',
-                backgroundColor: 'var(--secondary)',
+                backgroundColor: 'white',
                 color: 'var(--primary)',
                 fontWeight: 500,
               },

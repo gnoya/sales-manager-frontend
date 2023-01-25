@@ -1,4 +1,3 @@
-import { mockPagination, mockProducts } from '../mock-data/mock-data'
 import { Pagination } from '../models/pagination.model'
 import {
   Product,
@@ -9,18 +8,15 @@ import { privateHTTP } from './http.service'
 
 export async function createProduct(
   name: string,
-  quantity: number
+  quantity: number,
+  price?: number,
+  profit?: number
 ): Promise<void> {
-  return
-
-  await privateHTTP.post('/product.service/products', { name, quantity })
+  await privateHTTP.post('/products', { name, quantity, price, profit })
 }
 
 export async function deleteProduct(id: string): Promise<void> {
-  console.log(`Deleting product ${id}`)
-  return
-
-  await privateHTTP.delete(`/product.service/products/${id}`)
+  await privateHTTP.delete(`/products/${id}`)
 }
 
 export async function updateProduct(
@@ -28,10 +24,7 @@ export async function updateProduct(
   name?: string,
   quantity?: number
 ): Promise<void> {
-  console.log(id, name, quantity)
-  return
-
-  await privateHTTP.put(`/product.service/products/${id}`, { name, quantity })
+  await privateHTTP.put(`/products/${id}`, { name, quantity })
 }
 
 export async function getProducts(
@@ -41,26 +34,30 @@ export async function getProducts(
   products: Product[]
   pagination: Pagination
 }> {
-  console.log(`Getting page ${page} and limit ${limit}`)
-  // const response = await privateHTTP.get('/product.service/products')
-  const response = { data: mockProducts }
-  const pagination = mockPagination
+  const response = await privateHTTP.get('/products', {
+    params: { page, limit },
+  })
+  const pagination: Pagination = response.data.links
 
-  return { products: transformProductArray(response.data), pagination }
+  return { products: transformProductArray(response.data.data), pagination }
+}
+
+export async function batchProducts(ids: string[]): Promise<Product[]> {
+  const response = await privateHTTP.get('/products/batch', { params: { ids } })
+
+  return transformProductArray(response.data.data)
 }
 
 export async function getProductsByName(name: string): Promise<Product[]> {
-  console.log(`Getting with name ${name}`)
-  // const response = await privateHTTP.get('/product.service/products')
-  const response = { data: mockProducts }
+  const response = await privateHTTP.get('/products', {
+    params: { page: 1, limit: 100, name },
+  })
 
-  return transformProductArray(response.data)
+  return transformProductArray(response.data.data)
 }
 
 export async function getProduct(id: string): Promise<Product> {
-  console.log(`Getting with id ${id}`)
-  // const response = await privateHTTP.get(`/product.service/products/${id}`)
-  const response = { data: mockProducts[0] }
+  const response = await privateHTTP.get(`/products/${id}`)
 
-  return transformProduct(response.data)
+  return transformProduct(response.data.data)
 }

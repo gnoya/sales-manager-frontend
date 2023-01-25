@@ -25,7 +25,7 @@ export default function ProductsPage() {
     try {
       const { products, pagination } = await getProducts(page, limit)
       setProducts(products)
-      setTotalPages(pagination.last)
+      setTotalPages(pagination.pages)
     } catch (err) {
       handleError(err)
     }

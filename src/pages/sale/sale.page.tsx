@@ -5,7 +5,9 @@ import { useErrorHandler } from '../../hooks/use-error-handler/use-error-handler
 import { useLoading } from '../../hooks/use-loading/use-loading.hook'
 import BackButtonLayout from '../../layouts/back-button/back-button.layout'
 import { Sale } from '../../models/sale.model'
+import { getProduct } from '../../services/product.service'
 import { getSale } from '../../services/sale.service'
+import { getUser } from '../../services/user.service'
 import styles from './sale.page.module.css'
 
 export default function SalePage() {
@@ -18,14 +20,14 @@ export default function SalePage() {
     if (!id) return
 
     startLoading()
-
     try {
       const sale = await getSale(id)
+      sale.product = await getProduct(sale.productId)
+      sale.user = await getUser(sale.userId)
       setSale(sale)
     } catch (err) {
       handleError(err)
     }
-
     stopLoading()
   }, [id, setSale, handleError, startLoading, stopLoading])
 

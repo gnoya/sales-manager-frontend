@@ -7,7 +7,9 @@ import { useLoading } from '../../hooks/use-loading/use-loading.hook'
 import { usePagination } from '../../hooks/use-pagination/use-pagination.hook'
 import ListLayout from '../../layouts/list/list.layout'
 import { Sale } from '../../models/sale.model'
+import { batchProducts } from '../../services/product.service'
 import { getSales } from '../../services/sale.service'
+import { batchUsers } from '../../services/user.service'
 
 export default function SalesPage() {
   const { pathname } = useLocation()
@@ -25,8 +27,27 @@ export default function SalesPage() {
 
     try {
       const { sales, pagination } = await getSales(page, limit)
-      setSales(sales)
-      setTotalPages(pagination.last)
+
+      const users = await batchUsers(
+        sales
+          .map((sale) => sale.userId)
+          .filter((item, i, ar) => ar.indexOf(item) === i)
+      )
+      const products = await batchProducts(
+        sales
+          .map((sale) => sale.productId)
+          .filter((item, i, ar) => ar.indexOf(item) === i)
+      )
+
+      const salesWithRelationships = sales.map((sale) => {
+        sale.product = products.find((product) => product.id === sale.productId)
+        sale.user = users.find((user) => user.id === sale.userId)
+
+        return sale
+      })
+
+      setSales(salesWithRelationships)
+      setTotalPages(pagination.pages)
     } catch (err) {
       handleError(err)
     }
